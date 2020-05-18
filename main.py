@@ -12,6 +12,19 @@ import os
 import base64
 
 # import os
+
+
+class Pic_str:
+    def create_uuid(self): #生成唯一的图片的名称字符串，防止图片显示时的重名问题
+        nowTime = datetime.datetime.now().strftime("%Y%m%d%H%M%S");  # 生成当前时间
+        randomNum = random.randint(0, 100);  # 生成的随机整数n，其中0<=n<=100
+        if randomNum <= 10:
+            randomNum = str(0) + str(randomNum);
+        uniqueNum = str(nowTime) + str(randomNum);
+        return uniqueNum;
+
+
+
 # os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 # gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.9)
@@ -61,15 +74,7 @@ def convolutional(input):
 
 
 app = Flask(__name__)
-
-class Pic_str:
-    def create_uuid(self): #生成唯一的图片的名称字符串，防止图片显示时的重名问题
-        nowTime = datetime.datetime.now().strftime("%Y%m%d%H%M%S");  # 生成当前时间
-        randomNum = random.randint(0, 100);  # 生成的随机整数n，其中0<=n<=100
-        if randomNum <= 10:
-            randomNum = str(0) + str(randomNum);
-        uniqueNum = str(nowTime) + str(randomNum);
-        return uniqueNum;
+app.config['JSON_AS_ASCII'] = False
 
 UPLOAD_FOLDER = 'upload'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -143,11 +148,6 @@ def mnist():
         1, 784)
     output1 = regression(input)
     output2 = convolutional(input)
-
-    ocr = CnOcr()
-    res = ocr.ocr()
-    # res = ocr.ocr('examples/multi-line_cn1.png')
-    print("Predicted Chars:", res)
     return jsonify(results=[output1, output2])
 
 
