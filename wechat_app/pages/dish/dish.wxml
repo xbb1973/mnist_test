@@ -1,0 +1,21 @@
+<view class="container">
+<view class="img_wrap">
+    <image src="{{ img }}" mode='aspectFit'/>
+</view>
+<button bindtap="uploads" class="up">拍照/选取图片识别</button>
+  <text class="user-names" wx:if="{{dishName}}">菜品名称:{{dishName}}</text>
+  <text class="user-calories" wx:if="{{calorie}}">卡路里含量:{{calorie}}</text>
+ <text class="user-probabilitys" wx:if="{{probability}}">可信度:{{probability}}</text>
+   <text class="user-probabilitys" wx:if="{{info}}">错误提示:{{info}}</text>
+<view class='baikeinfo' wx:if="{{description}}">
+   <view>
+    <view class='baikecard'>
+      <text style='font-size:36rpx;margin:14rpx 0rpx;color:#3a3a3a' wx:if="{{description}}">{{dishName}}</text>
+<text class='baikecontent' wx:if="{{description}}">{{description}}</text>
+<view class='baikeform'>
+<text wx:if="{{description}}">来源 小帅知道</text>
+    </view>
+   </view>
+   </view>
+</view>
+ </view>

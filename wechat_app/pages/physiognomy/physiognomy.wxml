@@ -1,0 +1,62 @@
+<view class="container">
+<view class="img_wrap">
+    <image src="{{ img }}" mode='aspectFit'/>
+</view>
+<button bindtap="uploads" class="up">拍照/选取图片识别</button>
+   <text class="user-probabilitys" wx:if="{{info}}">错误提示:{{info}}</text>
+
+   <view class='baikecard' wx:if="{{physiognomy}}">
+      <text style='font-size:40rpx;margin:14rpx 0rpx;color:#3a3a3a;font-weight:bold'>脸型:{{physiognomy.face.shape}}</text>
+      <text class='baikecontent' >{{physiognomy.face.paraphrase[0]}}</text>
+      <text class='baikecontent' >{{physiognomy.face.paraphrase[1]}}</text>
+      <text class='baikecontent'>{{physiognomy.face.paraphrase[2]}}</text>
+      <text class='baikecontent' >{{physiognomy.face.paraphrase[3]}}</text>
+      <text class='baikecontent' >{{physiognomy.face.paraphrase[4]}}</text>
+      <view class='baikeform'>
+    </view>
+   </view>
+   <view style="padding-top:20rpx;" wx:if="{{physiognomy}}"></view>
+   <view class='baikecard' wx:if="{{physiognomy}}">
+      <text style='font-size:40rpx;margin:14rpx 0rpx;color:#3a3a3a;font-weight:bold' >眉毛:{{physiognomy.brow.shape}}</text>
+      <text class='baikecontent' >{{physiognomy.brow.paraphrase[0]}}</text>
+      <text class='baikecontent' >{{physiognomy.brow.paraphrase[1]}}</text>
+      <text class='baikecontent' >{{physiognomy.brow.paraphrase[2]}}</text>
+      <text class='baikecontent' >{{physiognomy.brow.paraphrase[3]}}</text>
+      <text class='baikecontent' >{{physiognomy.brow.paraphrase[4]}}</text>
+      <view class='baikeform'>
+    </view>
+   </view>
+   <view style="padding-top:20rpx;" wx:if="{{physiognomy}}"></view>
+   <view class='baikecard' wx:if="{{physiognomy}}">
+      <text style='font-size:40rpx;margin:14rpx 0rpx;color:#3a3a3a;font-weight:bold' >眼睛:{{physiognomy.eye.shape}}</text>
+      <text class='baikecontent' >{{physiognomy.eye.paraphrase[0]}}</text>
+      <text class='baikecontent' >{{physiognomy.eye.paraphrase[1]}}</text>
+      <text class='baikecontent' >{{physiognomy.eye.paraphrase[2]}}</text>
+      <text class='baikecontent' >{{physiognomy.eye.paraphrase[3]}}</text>
+      <text class='baikecontent' >{{physiognomy.eye.paraphrase[4]}}</text>
+      <view class='baikeform'>
+    </view>
+   </view>
+   <view style="padding-top:20rpx;" wx:if="{{physiognomy}}"></view>
+   <view class='baikecard' wx:if="{{physiognomy}}">
+      <text style='font-size:40rpx;margin:14rpx 0rpx;color:#3a3a3a;font-weight:bold' >嘴巴:{{physiognomy.mouth.shape}}</text>
+      <text class='baikecontent' >{{physiognomy.mouth.paraphrase[0]}}</text>
+      <text class='baikecontent' >{{physiognomy.mouth.paraphrase[1]}}</text>
+      <text class='baikecontent' >{{physiognomy.mouth.paraphrase[2]}}</text>
+      <text class='baikecontent' >{{physiognomy.mouth.paraphrase[3]}}</text>
+      <text class='baikecontent' >{{physiognomy.mouth.paraphrase[4]}}</text>
+      <view class='baikeform'>
+    </view>
+   </view>
+   <view style="padding-top:20rpx;" wx:if="{{physiognomy}}"></view>
+   <view class='baikecard' wx:if="{{physiognomy}}">
+      <text style='font-size:40rpx;margin:14rpx 0rpx;color:#3a3a3a;font-weight:bold' >鼻子:{{physiognomy.nose.shape}}</text>
+      <text class='baikecontent' >{{physiognomy.nose.paraphrase[0]}}</text>
+      <text class='baikecontent' >{{physiognomy.nose.paraphrase[1]}}</text>
+      <text class='baikecontent' >{{physiognomy.nose.paraphrase[2]}}</text>
+      <text class='baikecontent' >{{physiognomy.nose.paraphrase[3]}}</text>
+      <text class='baikecontent' >{{physiognomy.nose.paraphrase[4]}}</text>
+      <view class='baikeform'>
+    </view>
+   </view>
+ </view>

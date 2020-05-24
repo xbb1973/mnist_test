@@ -1,0 +1,104 @@
+.image {
+  width: 100%;
+  height: 360rpx;
+}
+.model-list {
+  margin: 20rpx 12rpx 1rpx 12rpx;
+  display: inline-block;
+}
+.model-list image {
+  width: 160rpx;
+  height: 240rpx;
+}
+.container{
+  margin-top: -110px;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: bottom;
+  background-position-x: right;
+}
+
+button{
+  font-family: 微软雅黑;
+}
+.facemerge{
+  width: 120px;
+}
+.facemergetext{
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+}
+.scroll-view {
+  position: absolute;
+  bottom: 10rpx;
+  left: 0;
+  width: 100%;
+  height: 340rpx;
+  white-space: nowrap;
+  display: flex;
+  box-shadow: 0px 3px 40px rgba(0, 0, 0, 0.3);
+}
+.page-body-info {
+  display: flex;
+  box-sizing: border-box;
+  padding: 30rpx;
+  height: 420rpx;
+  border-top: 1rpx solid #D9D9D9;
+  border-bottom: 1rpx solid #D9D9D9;
+  align-items: center;
+  justify-content: center;
+}
+.up {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-family: 微软雅黑;
+  width: 200px;
+  height: 50px;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 25px;
+  background-color: rgb(26, 160, 225);
+}
+.img_wrap {
+    margin-bottom: 10px;
+    width: 750rpx;
+    height: 720rpx;
+    background: #ececec;
+}
+.tip {
+  text-align: center;
+  font-size: 68rpx;
+  position: absolute;
+  top: 367rpx;
+  color: black;
+  margin: auto;
+  left: 0;
+  right: 0;
+  font-weight: blod;
+}
+image {
+    width: 100%;
+    height: 100%;
+    max-height: 1
+}
+.msg {
+    margin: 10px 0;
+    text-align: center;
+}
+.paizhao{
+border: 4rpx solid rgb(26, 160, 225);
+border-radius: 50rpx;
+padding: 10rpx 50rpx 10rpx 30rpx;
+color:rgb(26, 160, 225);
+font-size: 26rpx;
+display: flex;
+align-items: center;
+}
+.camera{
+  height: 50rpx;
+  width: 50rpx;
+  vertical-align: middle;
+  margin:0rpx 20rpx;
+}

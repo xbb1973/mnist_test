@@ -1,0 +1,31 @@
+<view class="container">
+<view class="img_wrap">
+    <image src="{{img}}" bindtap='preview' mode='aspectFit' wx:if="{{img}}"></image>
+           <view wx:if="{{!img}}" class='tip' bindtap='chooseImage'>拍照/选取图片
+ </view>
+</view>
+<view class='paizhao' bindtap="chooseImage">
+<image class='camera' src='../../image/camera.png'></image>
+<text>拍照/选取图片</text>
+</view>
+<view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">人像滤镜特效</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">图片滤镜特效</view>
+</view>
+<view class="scroll-view" wx:if="{{currentTab==0}}">
+  <scroll-view scroll-x="true" class='scroll-view-child'>
+  <view class='model-list' wx:for-items="{{imgfilterPT}}" wx:key="item">
+    <image src='{{item.url}}' class='facemerge' mode='aspectFit'  bindtap='onFaceMerge' data-id="{{item.id}}"></image>
+     <view class='facemergetext'>{{item.text}}</view>
+    </view>                       
+  </scroll-view>
+  </view>
+  <view class="scroll-view" wx:if="{{currentTab==1}}">
+  <scroll-view scroll-x="true" class='scroll-view-child'>
+  <view class='model-list' wx:for-items="{{imgfilterVision}}" wx:key="item">
+    <image src='{{item.url}}' class='facemerge' mode='aspectFit'  bindtap='onFaceMerge' data-id="{{item.id}}"></image>
+     <view class='facemergetext'>{{item.text}}</view>
+    </view>                       
+  </scroll-view>
+  </view>
+</view>

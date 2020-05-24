@@ -1,0 +1,14 @@
+<view class="container">
+<view class="img_wrap">
+    <image src="{{ img }}" mode='aspectFit'/>
+</view>
+<button bindtap="uploads" class="up">拍照/选取图片识别</button>
+  <text class="user-age"    wx:if="{{age}}">年龄:{{age}}</text>
+  <text class="user-beauty" wx:if="{{beauty}}">颜值:{{beauty}}</text>
+  <text class="user-beauty" wx:if="{{expression}}">表情:{{expression}}</text>
+  <text class="user-beauty" wx:if="{{faceShape}}">脸型:{{faceShape}}</text>
+  <text class="user-beauty" wx:if="{{gender}}">性别:{{gender}}</text>
+  <text class="user-beauty" wx:if="{{glasses}}">眼镜:{{glasses}}</text>
+  <text class="user-beauty" wx:if="{{raceType}}">肤色:{{raceType}}</text>
+  <text class="user-info" wx:if="{{info}}">识别提示:{{info}}</text>
+ </view>

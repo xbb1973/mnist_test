@@ -1,0 +1,9 @@
+ <view class="container">
+<view class="img_wrap">
+    <image src="{{ img }}" mode='aspectFit'/>
+</view>
+<button bindtap="uploads" class="up">拍照/选取图片识别</button>
+  <text class="user-names" wx:if="{{label}}" selectable='true'>识别的文字有:{{label}}</text>
+  <text class="user-probabilitys" wx:if="{{info}}">错误提示:{{info}}</text>
+  <view bindtap='copyHWT' wx:if="{{label}}" class="upcopy">复制识别内容</view>
+ </view>

@@ -1,0 +1,22 @@
+ <view class="container">
+<view class="img_wrap">
+    <image src="{{ img }}" mode='aspectFit'/>
+</view>
+<button bindtap="uploads" class="up">拍照/选取图片识别</button>
+  <text class="user-names" wx:if="{{icrName}}">车型名称:{{icrName}}</text>
+  <text class="user-probabilitys" wx:if="{{year}}">车型年份:{{year}}</text>
+  <text class="user-probabilitys" wx:if="{{colorResult}}">车型颜色:{{colorResult}}</text>
+  <text class="user-probabilitys" wx:if="{{score}}">车型可信度:{{score}}</text>
+    <text class="user-probabilitys" wx:if="{{info}}">错误提示:{{info}}</text>
+    <view class='baikeinfo' wx:if="{{description}}">
+   <view>
+    <view class='baikecard'>
+      <text style='font-size:36rpx;margin:14rpx 0rpx;color:#3a3a3a' wx:if="{{description}}">{{icrName}}</text>
+<text class='baikecontent' wx:if="{{description}}">{{description}}</text>
+<view class='baikeform'>
+<text wx:if="{{description}}">来源 小帅知道</text>
+    </view>
+   </view>
+   </view>
+</view>
+ </view>

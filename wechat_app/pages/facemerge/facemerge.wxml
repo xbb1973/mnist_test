@@ -1,0 +1,16 @@
+<view class="container">
+<view class="img_wrap">
+    <image src="{{img}}" bindtap='preview' mode='aspectFit' wx:if="{{img}}"></image>
+           <view wx:if="{{!img}}" class='tip' bindtap='chooseImage'>拍照/选取图片
+ </view>
+</view>
+<button bindtap="chooseImage" class="up">上传图片</button>
+<view class="scroll-view">
+  <scroll-view scroll-x="true" class='scroll-view-child'>
+  <view class='model-list' wx:for-items="{{facemergeData}}" wx:key="item">
+    <image src='{{item.url}}' class='facemerge' mode='aspectFit'  bindtap='onFaceMerge' data-id="{{item.id}}"></image>
+     <view class='facemergetext'>{{item.text}}</view>
+    </view>                       
+  </scroll-view>
+  </view>
+</view>

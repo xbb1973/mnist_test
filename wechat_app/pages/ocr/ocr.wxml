@@ -1,0 +1,45 @@
+<view class="classname">
+<view class="page-body">
+    <view class="page-section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">接口类型</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+              <view class="weui-input">{{array[index]}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      </view>
+      </view>
+<view class="container">
+<view class="img_wrap">
+    <image src="{{ img }}" mode='aspectFit'/>
+</view>
+<button bindtap="uploads" class="up">拍照/选取图片识别</button>
+  <text class="user-beauty" wx:if="{{words}}" selectable="true">识别内容:\n {{words}}</text>
+  <text class="user-beauty" wx:if="{{imageStatus}}" selectable="true">图片状态:{{imageStatus}}</text>
+  <text class="user-beauty" wx:if="{{name}}" selectable="true">姓名:{{name}}</text>
+  <text class="user-beauty" wx:if="{{sex}}" selectable="true">性别:{{sex}}</text>
+  <text class="user-beauty" wx:if="{{nation}}" selectable="true">民族:{{nation}}</text>
+  <text class="user-beauty" wx:if="{{birth}}" selectable="true">出生:{{birth}}</text>
+  <text class="user-beauty" wx:if="{{address}}" selectable="true">住址:{{address}}</text>
+  <text class="user-beauty" wx:if="{{idCardNum}}" selectable="true">身份证号:{{idCardNum}}</text>
+  <text class="user-beauty" wx:if="{{riskType}}" selectable="true">风险类型:{{riskType}}</text>
+  <text class="user-beauty" wx:if="{{authority}}" selectable="true">签发机关:{{authority}}</text>
+  <text class="user-beauty" wx:if="{{expiryDate}}" selectable="true">失效日期:{{expiryDate}}</text>
+  <text class="user-beauty" wx:if="{{issueDate}}" selectable="true">签发日期:{{issueDate}}</text>
+  <text class="user-beauty" wx:if="{{bankName}}" selectable="true">发卡行:{{bankName}}</text>
+  <text class="user-beauty" wx:if="{{bankCardType}}" selectable="true">卡片类型:{{bankCardType}}</text>
+  <text class="user-beauty" wx:if="{{bankCardNumber}}" selectable="true">卡号:{{bankCardNumber}}</text>
+  <text class="user-beauty" wx:if="{{info}}">错误提示:{{info}}</text>
+  <view bindtap='copyTEXT' wx:if="{{words}}" class="upcopy">复制识别内容</view>
+  <view bindtap='copyTEXT' wx:if="{{name}}" class="upcopy">复制识别内容</view>
+  <view bindtap='copyTEXT' wx:if="{{authority}}" class="upcopy">复制识别内容</view>
+  <view bindtap='copyTEXT' wx:if="{{bankName}}" class="upcopy">复制识别内容</view>
+ </view>
+</view>
+

@@ -1,0 +1,20 @@
+<view class="container">
+<view class="content">
+<view class='contentview'> 
+<image src="{{ imgA }}" mode='aspectFit'/>
+    <button bindtap="chooseImageA" class="uplite">上传图一</button>
+    </view>
+<view class='contentview'> 
+<image src="{{ imgB }}" mode='aspectFit'/>
+    <button bindtap="chooseImageB" class="uplite">上传图二</button>
+</view>
+</view>
+ <button bindtap="onFaceAge" class="up">点击查看相似度</button>
+</view>
+<view>
+<text class="user-probabilitys"  wx:if="{{score}}">相似度:</text>
+<progress percent="{{score}}" show-info active stroke-width="20" activeColor="#0eaffe" wx:if="{{score}}" class='pro'/>
+<text class="user-probabilitys"  wx:if="{{scores}}">{{info}}:</text>
+<progress percent="{{scores}}" show-info active stroke-width="20" activeColor="rgb(41,165,154)" wx:if="{{scores}}" class='pros'/>
+</view>
+

@@ -1,0 +1,64 @@
+<!-- <view class="container">-->
+<view class="container1-body"> 
+<view class="img_wrap">
+    <image src="{{ img }}" mode='aspectFit'/>
+</view>
+ <view class='feed-back' wx:if="{{info}}"><text class="user-probabilitys" wx:if="{{info}}">{{info}}</text></view>
+<view class='demo-result-title' wx:if="{{code==0}}">分析结果</view>
+<view class="demo-result-content" wx:if="{{code==0}}">
+<view class="progress_box" wx:if="{{code==0}}" style="width:{{width}}; height: {{height}}">
+    <canvas canvasId="canvasProgressbg" class="progress_bg" style="width:{{width}}; height: {{height}}"></canvas>
+    <canvas canvasId="canvasProgress" class="progress_canvas" style="width:{{width}}; height: {{height}}"></canvas>
+    <view class="progress_text">
+        <text class="progress_info"> {{percent}}</text>
+        <text class="progress_unit">分</text>
+    </view>
+</view>
+
+<view class='lvhu-severe' wx:if="{{code==0}}">综合健康指数</view>
+
+
+<view class="little-box" wx:if="{{code==0}}" wx:for="{{setdatas}}" wx:key="index">
+    <view class="left">
+        <image class="note-image" src="{{item.image}}"></image>
+        <view class="little-title">{{item.name}}</view>
+    </view>
+    <view class="progress right">
+        <vew class="progress_part-box">
+            <view class="mild progress_part"></view>
+            <view class="part_title">轻度</view>
+        </vew>
+        <vew class="progress_part-box">
+            <view class="moderate progress_part"></view>
+            <view class="part_title">中度</view>
+        </vew>
+        <vew class="progress_part-box">
+            <view class="severe progress_part"></view>
+            <view class="part_title">重度</view>
+        </vew>
+        <view class="pointer" style="left:{{item.percent-2}}%;">
+            <image class="pointer-image" src="../../image/pointer.png"></image>
+        </view>
+    </view>
+    </view>
+   
+</view>
+
+<view class="footer-box">
+
+<view class='feed-back'>
+ <view class='tunRate'>
+请确保图片中包含人脸，素颜最佳
+</view>
+</view>
+<view class="demo-dibu"></view>
+</view>
+</view>
+
+
+
+<view class="container-footer"  bindtap='uploads'>
+		<button class="one" hover-class="hover-button">上传图片</button>
+	</view>
+
+  <!-- </view> -->

@@ -1,0 +1,8 @@
+<view class="container">
+<view class="img_wrap">
+    <image src="{{img}}" bindtap='preview' mode='aspectFit'></image>
+</view>
+<button bindtap="uploads" class="up">拍照/选取图片识别</button>
+   <text class="user-probabilitys" wx:if="{{info}}">错误提示:{{info}}</text>
+   <text class="user-remark">温馨提示:{{remark}}</text>
+ </view>
