@@ -18,7 +18,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.11.1",
 	"appid": "wxf603abaf46885e9b",
-	"projectname": "miniprogram-2-DLCV",
+	"projectname": "hwr_flask_wechat_app",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

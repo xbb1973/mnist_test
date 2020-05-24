@@ -80,44 +80,6 @@ Page({
             title: "努力分析中...",
             mask: true
         }),
-        // wx.uploadFile({
-        //   url: hwUrl,
-        //   filePath: res.tempFilePaths[0],
-        //   header: {
-        //     'content-type': 'multipart/form-data'
-        //   },
-        //   name: 'file',
-        //   formData: {
-        //     'openId': that.data.openId,
-        //     'nickName': that.data.nickName
-        //   },
-        //   success: function (res) {
-        //     wx.hideLoading();
-        //     var data = res.data;
-        //     var str = JSON.parse(data);
-        //     console.log(str);
-        //     if (str.code == "0") {
-        //       that.setData({
-        //         label: str.label
-        //       })
-        //     } else if (str.code == "1") {
-        //       that.setData({
-        //         info: str.msg
-        //       })
-        //     } else {
-        //       that.setData({
-        //         info: "Sorry 小程序远走高飞了"
-        //       })
-        //     }
-        //   },
-        //   fail: function (res) {
-        //     wx.hideLoading();
-        //     console.log(res);
-        //     that.setData({
-        //       info: '小程序离家出走了稍后再试'
-        //     })
-        //   }
-        // }),
         wx.uploadFile({
           url: "http://192.168.0.100:8000/up_photo",
           filePath: res.tempFilePaths[0],
@@ -134,19 +96,28 @@ Page({
             var data = res.data;
             var str = JSON.parse(data);
             console.log(str);
-            if (str.code == "0") {
+            if (str.success == "1") {
               that.setData({
-                label: str.label
-              })
-            } else if (str.code == "1") {
-              that.setData({
-                info: str.msg
+                label: str.msg
               })
             } else {
               that.setData({
-                info: "Sorry 小程序远走高飞了"
+                info: "ocr识别失败"
               })
             }
+            // if (str.code == "0") {
+            //   that.setData({
+            //     label: str.label
+            //   })
+            // } else if (str.code == "1") {
+            //   that.setData({
+            //     info: str.msg
+            //   })
+            // } else {
+            //   that.setData({
+            //     info: "Sorry 小程序远走高飞了"
+            //   })
+            // }
           },
           fail: function (res) {
             wx.hideLoading();

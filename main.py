@@ -111,7 +111,7 @@ def api_upload():
         res = ocr.ocr(img)
         print("Predicted Chars:", res)
 
-        return jsonify({"success": 0, "msg": res})
+        return jsonify({"success": 1, "msg": res})
         # return jsonify({"success": 0, "msg": "上传成功"})
     else:
         return jsonify({"error": 1001, "msg": "上传失败"})
@@ -139,6 +139,7 @@ def show_photo(filename):
             return response
     else:
         pass
+
 
 # 路由
 @app.route("/api/mnist", methods=['post'])
