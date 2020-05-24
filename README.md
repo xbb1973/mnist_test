@@ -1,4 +1,14 @@
-# mnist_test
+# tf-pytorch-flask-web-wechat 基于基础项目进行改进改版
+## 功能：
+### 1、实现tensorflow或pytorch的各类型深度学习应用
+### 2、利用flask部署各类深度学习API
+### 3、提供pc web 或 小程序的前端应用，调用相关API
+
+
+
+
+
+# 原README.md mnist_test
 mnist数据集的使用
 ## one_hot
 ```python
