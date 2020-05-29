@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbde06eb-d73c-4d85-863f-69d27bae6821" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wechat_app/pages/nine/nine.json" beforeDir="false" afterPath="$PROJECT_DIR$/wechat_app/pages/nine/nine.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wechat_app/pages/nine/nine.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/wechat_app/pages/nine/nine.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wechat_app/pages/youtuHW/youtuHW.js" beforeDir="false" afterPath="$PROJECT_DIR$/wechat_app/pages/youtuHW/youtuHW.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wechat_app/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/wechat_app/project.config.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
+            <state relative-caret-position="-462">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="74" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -34,6 +31,7 @@
     <findStrings>
       <find>main.js</find>
       <find>img_fp</find>
+      <find>main</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -62,7 +60,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="950" />
+    <option name="width" value="1058" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectView">
@@ -70,6 +68,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -81,7 +80,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -158,9 +156,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="950" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1058" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27987084" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17261331" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -171,7 +169,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3299363" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299363" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3299363" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3299363" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005612" side_tool="true" weight="0.35286623" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3299363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -211,19 +209,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upload/2020052502114148.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload/2020052502112898.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/2020052502114148.jpg" />
+    <entry file="file://$PROJECT_DIR$/upload/2020052502112898.jpg" />
     <entry file="file://$PROJECT_DIR$/wechat_app/LICENSE">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -290,10 +277,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="31" column="6" lean-forward="true" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
+        <state relative-caret-position="-462">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="74" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

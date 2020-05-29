@@ -81,7 +81,7 @@ Page({
             mask: true
         }),
         wx.uploadFile({
-          url: "http://192.168.0.100:8000/up_photo",
+          url: "http://192.168.3.8:8000/up_photo",
           filePath: res.tempFilePaths[0],
           header: {
             'content-type': 'multipart/form-data'
