@@ -14,6 +14,15 @@ import base64
 # import os
 
 
+from crnn.model import CRNN
+from crnn import Config
+import torch
+import torch.nn.functional as F
+from torchvision import transforms
+import cv2
+
+
+
 class Pic_str:
     def create_uuid(self): #生成唯一的图片的名称字符串，防止图片显示时的重名问题
         nowTime = datetime.datetime.now().strftime("%Y%m%d%H%M%S");  # 生成当前时间
@@ -21,8 +30,7 @@ class Pic_str:
         if randomNum <= 10:
             randomNum = str(0) + str(randomNum);
         uniqueNum = str(nowTime) + str(randomNum);
-        return uniqueNum;
-
+        return uniqueNum
 
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "1"
@@ -111,6 +119,41 @@ def api_upload():
         res = ocr.ocr(img)
         print("Predicted Chars:", res)
 
+
+        if False:
+            # TODO: image_path
+            # FIXME
+            # BUG
+            # image_path = os.path.join(IMG_ROOT, image.filename)
+            # image_path = image.filename
+            image_path = img_fp
+            # 将图片读取进来
+            image = cv_imread(image_path)
+
+            # Preprocess the image and prepare it for classification.
+            image = prepare_image(image)
+
+            # infer
+            # 将图片数据输入模型
+            output = model(image)
+            output_log_softmax = F.log_softmax(output, dim=-1)
+
+            # 对结果进行解码
+            pred_labels = ctc_greedy_decoder(output_log_softmax)
+            pred_texts = ''.join(Idx2Word(pred_labels))
+            # print('predict result: {}\n'.format(pred_texts))
+
+            # FIXME:
+            data['predictions'] = list()
+            data['predictions'].append({'result': pred_texts})
+            print("Predicted Chars:", data['predictions'])
+
+            # Indicate that the request was a success.
+            data["success"] = True
+
+            # Return the data dictionary as a JSON response.
+            return jsonify({"success": 1, "msg": data})
+
         return jsonify({"success": 1, "msg": res})
         # return jsonify({"success": 0, "msg": "上传成功"})
     else:
@@ -159,4 +202,4 @@ def main():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='localhost', port=8000)
