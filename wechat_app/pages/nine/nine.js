@@ -7,47 +7,53 @@ Page({
   data: {
     routers: [
       {
-        id: '0',
-        name: '菜品识别',
-        url: '../../pages/dish/dish',
-        icon: '../../image/dishNine.png'
+        id: '11',
+        name: '手写文字识别',
+        url: '../../pages/youtuHW/youtuHW',
+        icon: '../../image/youtuHW.png'
       },
+      // {
+      //   id: '0',
+      //   name: '菜品识别',
+      //   url: '../../pages/dish/dish',
+      //   icon: '../../image/dishNine.png'
+      // },
       {
         id: '1',
         name: '车型识别',
         url: '../../pages/car/car',
         icon: '../../image/carNine.png'
       },
-      {
-        id: '2',
-        name: '植物识别',
-        url: '../../pages/plant/plant',
-        icon: '../../image/plantNine.png'
-      },
-      {
-        id: '13',
-        name: '花卉识别',
-        url: '../../pages/flower/flower',
-        icon: '../../image/flower.png'
-      },
+      // {
+      //   id: '2',
+      //   name: '植物识别',
+      //   url: '../../pages/plant/plant',
+      //   icon: '../../image/plantNine.png'
+      // },
+      // {
+      //   id: '13',
+      //   name: '花卉识别',
+      //   url: '../../pages/flower/flower',
+      //   icon: '../../image/flower.png'
+      // },
       // {
       //   id: '4',
       //   name: '图像主体识别',
       //   url: '../../pages/subject/subject',
       //   icon: '../../image/image_HL.png'
       // },
-      {
-        id: '19',
-        name: '红酒识别',
-        url: '../../pages/redwine/redwine',
-        icon: '../../image/redwine.png'
-      },
-      {
-        id: '20',
-        name: '景区识别',
-        url: '../../pages/landmark/landmark',
-        icon: '../../image/landmark.png'
-      },
+      // {
+      //   id: '19',
+      //   name: '红酒识别',
+      //   url: '../../pages/redwine/redwine',
+      //   icon: '../../image/redwine.png'
+      // },
+      // {
+      //   id: '20',
+      //   name: '景区识别',
+      //   url: '../../pages/landmark/landmark',
+      //   icon: '../../image/landmark.png'
+      // },
       // {
       //   id: '21',
       //   name: '驾驶行为分析',
@@ -66,12 +72,12 @@ Page({
         url: '../../pages/quickcalculation/quickcalculation',
         icon: '../../image/quickcalculation.png'
       },
-      {
-        id: '12',
-        name: '快乐相似脸',
-        url: '../../pages/facedetectcrossageface/facedetectcrossageface',
-        icon: '../../image/ageNine.png'
-      },
+      // {
+      //   id: '12',
+      //   name: '快乐相似脸',
+      //   url: '../../pages/facedetectcrossageface/facedetectcrossageface',
+      //   icon: '../../image/ageNine.png'
+      // },
       // {
       // id: '5',
       //   name: '车辆定损识别',
@@ -84,30 +90,30 @@ Page({
         url: '../../pages/animal/animal',
         icon: '../../image/animalNine.png'
       },
-      {
-        id: '6',
-        name: '肤质分析',
-        url: '../../pages/skin/skin',
-        icon: '../../image/skin.png'
-      },
-      {
-        id: '7',
-        name: '品牌LOGO识别',
-        url: '../../pages/logo/logo',
-        icon: '../../image/tag_HL.png'
-      },
+      // {
+      //   id: '6',
+      //   name: '肤质分析',
+      //   url: '../../pages/skin/skin',
+      //   icon: '../../image/skin.png'
+      // },
+      // {
+      //   id: '7',
+      //   name: '品牌LOGO识别',
+      //   url: '../../pages/logo/logo',
+      //   icon: '../../image/tag_HL.png'
+      // },
       // {
       //   id: '8',
       //   name: '相似相同图像搜索',
       //   url: '../../pages/resemble/resemble',
       //   icon: '../../image/equal_HL.png'
       // },
-      {
-        id: '14',
-        name: '图片转字符图片',
-        url: '../../pages/image2ascii/image2ascii',
-        icon: '../../image/ascii_HL.png'
-      },
+      // {
+      //   id: '14',
+      //   name: '图片转字符图片',
+      //   url: '../../pages/image2ascii/image2ascii',
+      //   icon: '../../image/ascii_HL.png'
+      // },
       {
         id: '9',
         name: '食材识别',
@@ -120,36 +126,30 @@ Page({
         url: '../../pages/youtuHT/youtuHT',
         icon: '../../image/youtuHT.png'
       },
-      {
-        id: '11',
-        name: '手写文字识别',
-        url: '../../pages/youtuHW/youtuHW',
-        icon: '../../image/youtuHW.png'
-      },
-      {
-        id: '15',
-        name: '人脸美妆',
-        url: '../../pages/facecosmetic/facecosmetic',
-        icon: '../../image/facecosmetic.png'
-      },
-      {
-        id: '16',
-        name: '人脸变妆',
-        url: '../../pages/facedecoration/facedecoration',
-        icon: '../../image/facedecoration.png'
-      },
-      {
-        id: '17',
-        name: '滤镜特效',
-        url: '../../pages/imgfilter/imgfilter',
-        icon: '../../image/imgfilter.png'
-      },
-      {
-        id: '18',
-        name: '大头贴',
-        url: '../../pages/facesticker/facesticker',
-        icon: '../../image/facesticker.png'
-      }
+      // {
+      //   id: '15',
+      //   name: '人脸美妆',
+      //   url: '../../pages/facecosmetic/facecosmetic',
+      //   icon: '../../image/facecosmetic.png'
+      // },
+      // {
+      //   id: '16',
+      //   name: '人脸变妆',
+      //   url: '../../pages/facedecoration/facedecoration',
+      //   icon: '../../image/facedecoration.png'
+      // },
+      // {
+      //   id: '17',
+      //   name: '滤镜特效',
+      //   url: '../../pages/imgfilter/imgfilter',
+      //   icon: '../../image/imgfilter.png'
+      // },
+      // {
+      //   id: '18',
+      //   name: '大头贴',
+      //   url: '../../pages/facesticker/facesticker',
+      //   icon: '../../image/facesticker.png'
+      // }
     ]
   },
   toPage: function (event) {

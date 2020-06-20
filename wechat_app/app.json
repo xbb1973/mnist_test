@@ -42,19 +42,8 @@
     "selectedColor": "#1BA0E1",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
+
     "list": [
-      {
-        "pagePath": "pages/chram/chram",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
-        "text": "魅力值"
-      },
-      {
-        "pagePath": "pages/face/face",
-        "iconPath": "image/Face.png",
-        "selectedIconPath": "image/Face_HL.png",
-        "text": "颜值打分"
-      },
       {
         "pagePath": "pages/nine/nine",
         "iconPath": "image/image.png",
@@ -66,12 +55,6 @@
         "iconPath": "image/OCR.png",
         "selectedIconPath": "image/OCR_HL.png",
         "text": "文字识别"
-      },
-      {
-        "pagePath": "pages/facemerge/facemerge",
-        "iconPath": "image/facemerge.png",
-        "selectedIconPath": "image/facemerge_HL.png",
-        "text": "神奇变脸"
       }
     ]
   },

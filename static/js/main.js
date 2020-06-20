@@ -65,7 +65,7 @@ class Main {
     drawInput() {
         var ctx = this.input.getContext('2d');
         var img = new Image();
-        img.onload = () => {
+        img.onload = function () {
             var inputs = [];
             var small = document.createElement('canvas').getContext('2d');
             small.drawImage(img, 0, 0, img.width, img.height, 0, 0, 28, 28);
@@ -86,8 +86,9 @@ class Main {
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(inputs),
-                success: (data) => {
-                    data = JSON.parse(data);
+                success: function (data) {
+                    // console.log(result);
+                    // let data = JSON.parse(result);
                     for (let i = 0; i < 2; i++) {
                         var max = 0;
                         var max_index = 0;
@@ -118,7 +119,7 @@ class Main {
                     }
                 }
             });
-        };
+        }
         img.src = this.canvas.toDataURL();
     }
 }
