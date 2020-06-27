@@ -1,11 +1,11 @@
 # -*- coding: UTF-8 -*- 
-width = 280
+width = 400
 height = 32
 image_shape = [height, width]
 channels = 1
-max_text_len = 10  # fix to 10 chars
-num_classes = 6129  # 6128 + blank
-ctc_blank = 0
+max_text_len = 12  # fix to 10 chars
+num_classes = 3756  # 6128 + blank
+ctc_blank = num_classes - 1
 
 batch_size = 360
 epochs = 6

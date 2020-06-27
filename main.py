@@ -6,8 +6,9 @@ import cv2
 import datetime
 import random
 
-from crnn.model import CRNN
+from crnn.model import DenseNet_BLSTM_CTC_MODEL
 from crnn import Config
+from crnn import dictionary
 
 import torch
 import torch.nn.functional as F
@@ -20,13 +21,11 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 transform = transforms.ToTensor()
 
 # global variable
-model = CRNN(Config.num_classes)
+model = DenseNet_BLSTM_CTC_MODEL(num_classes=Config.num_classes)
 
 # 读取字典文件 用来翻译结果
-fp = open('./crnn/Idx2Char.txt', 'r', encoding='utf-8-sig')
-dictionary = fp.read()
-fp.close()
-char_dict = eval(dictionary)
+inverse_char_dict = dictionary.char_dict
+char_dict = dict([val,key] for key,val in inverse_char_dict.items())
 
 
 # 根据字典将序号转换为文字
@@ -386,4 +385,5 @@ def datalist():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host='127.0.0.1', port=8000)
+    # app.run(host='127.0.0.1', port=8000)
+    app.run(host='0.0.0.0', port=8000)
