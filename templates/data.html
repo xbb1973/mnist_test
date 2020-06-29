@@ -103,7 +103,7 @@
             <ul class="metismenu" id="menu">
                 <li class="nav-label">验证</li>
                 <li>
-                    <a href="{{ url_for('main')}}" aria-expanded="false">
+                    <a href="{{ url_for('main') }}" aria-expanded="false">
                         <i class="icon-badge menu-icon"></i><span class="nav-text">验证</span>
                     </a>
                 </li>
@@ -113,9 +113,9 @@
                         <i class="icon-graph menu-icon"></i> <span class="nav-text">训练</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ url_for('train')}}">新建训练</a></li>
-                        <li><a href="{{ url_for('datalist')}}">数据源</a></li>
-                        <li><a href="{{ url_for('dashboard')}}">控制面板</a></li>
+                        <li><a href="{{ url_for('train') }}">新建训练</a></li>
+                        <li><a href="{{ url_for('datalist') }}">数据源</a></li>
+                        <li><a href="{{ url_for('dashboard') }}">控制面板</a></li>
                     </ul>
                 </li>
             </ul>
@@ -134,9 +134,9 @@
         <div class="row page-titles mx-0">
             <div class="col p-md-0">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url_for('datalist')}}">Train</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url_for('datalist')}}">Datalist</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">DS xxx</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('datalist') }}">Train</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('datalist') }}">Datalist</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">DS {{ dataset_id }}</a></li>
                 </ol>
             </div>
         </div>
@@ -144,14 +144,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 m-b-30">
-                    <h4 class="d-inline">DataSource xxx</h4>
-                    <p class="text-muted">共xxx条数据 | 最近更新时间xxxx/xx/xx</p>
-                    <div class="row">
+                    <h4 class="d-inline">DataSet Id:{{ dataset_id }}</h4>
+                    <p class="text-muted">共{{ dataset_size }}条数据 | 最近更新时间{{ dataset_update_time }}</p>
+                    <div class="row" id="dataset_show_card_list">
                         <div class="col-md-6 col-lg-3">
                             <div class="card">
                                 <img class="img-fluid"
                                      src="{{ url_for('static', filename='quix/images/big/img1.jpg') }}" alt="">
-                                <div class="card-body">
+                                <div class="card-footer">
                                     <h5 class="card-title">Data 1</h5>
                                     <p class="card-text">Label:xxx</p>
                                     <div class="row">
@@ -366,7 +366,12 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Label</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="dataModalLabel" placeholder="请输入Label">
+                                <input type="text" class="form-control" id="dataModifyModalLable"
+                                       name="dataModifyModalLable" placeholder="请输入Label">
+                                <input type="text" class="form-control" id="image_orig_name" name="image_orig_name"
+                                       style="display: none">
+                                <input type="text" class="form-control" id="image_index" name="image_index"
+                                       style="display: none">
                             </div>
                         </div>
                     </form>
@@ -450,64 +455,142 @@
 <!--    <script src="./plugins/sweetalert/js/sweetalert.init.js"></script>-->
 
 <script type="text/javascript">
-    // function raiseModifyDataModal(id) {
-    //     $('#dataModifyModal').find('#dataModifyModalTitle').empty().append('数据Id: ' + id);
-    //     $('#dataModifyModal').modal('show');
-    // }
-
+    let this_dataset_id = {{ dataset_id }};
+    let url_list = null;
     $(function () {
-        console.log("js init");
-        let modify_btn_list = document.getElementsByClassName("dataModifyBtn");
-        let delete_btn_list = document.getElementsByClassName("sweet-confirm");
-        console.log(modify_btn_list.length);
 
-        if (checkIsNullOrEmpty(modify_btn_list)) {
-            for (var i = 0; i < modify_btn_list.length; i++) {
-                modify_btn_list[i].onclick = function () {
-                    let id = this.getAttribute('name');
-                    console.log(id);
-                    $('#dataModifyModal').find('#dataModifyModalTitle').empty().append('数据Id: ' + id);
-                    $('#dataModifyModal').modal('show');
-                }
-            }
-        }
+        $.ajax({
+            url: "/get_data_url?dataset_id=" + this_dataset_id + "&limit=" + 40 + "&page=" + 1,
+            type: "GET",
+            success: function (result) {
+                if (result.success == 1) {
+                    url_list = result.url_list;
+                    $('#dataset_show_card_list').empty();
+                    $.each(url_list, function (index, url) {
+                        let filename = url.split('/')[url.split('/').length - 1];
+                        let label = filename.split('.')[0];
+                        let main = $('<div></div>').addClass('col-md-6 col-lg-3').attr('id', 'card_item' + index);
+                        let card = $('<div></div>').addClass('card');
+                        let img = $('<img>').addClass('img-fluid').attr('src', url).attr('alt', 'label' + index);
+                        let card_footer = $('<div></div>').addClass('card-footer');
+                        let card_info = $('<div></div>').addClass('row')
+                            .append($('<div></div>').addClass('col-md-10 col-lg-10').append($('<small></small>').addClass('text-muted').append(label).attr('id', 'card_image_label' + index)))
+                            .append($('<div></div>').addClass('col-md-2 col-lg-2').append($('<div></div>').addClass('dropright custom-dropdown').append($('<span></span>').attr('type', 'button').addClass('fa fa-cog fa-lg').attr('data-toggle', 'dropdown').attr('style', 'cursor: pointer'))
+                                .append($('<div></div>').addClass('dropdown-menu dropdown-menu-right')
+                                    .append($('<a></a>').attr('name', index).addClass('dropdown-item dataModifyBtn').append('修改')).append($('<a></a>').attr('name', index).addClass('dropdown-item sweet-confirm').append('删除')))));
+                        card_footer.append(card_info);
+                        card.append(img).append(card_footer);
+                        main.append(card);
+                        $('#dataset_show_card_list').append(main);
 
-        if (checkIsNullOrEmpty(delete_btn_list)) {
-            for (var i = 0; i < delete_btn_list.length; i++) {
-                delete_btn_list[i].onclick = function () {
-                    let id = this.getAttribute('name');
-                    console.log(id);
-                    swal({
-                        title: "确定删除数据:" + id + " 吗 ?",
-                        text: "删除后就不可恢复 !!",
-                        type: "warning",
-                        showCancelButton: !0,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定, 删除它 !!",
-                        closeOnConfirm: !1
-                    }, function () {
-                        swal("已删除 !!", "Hey, 已删除数据:" + id + " !!", "success")
                     });
+
+                } else {
+                    toastr.warning("Warning", result.msg);
                 }
+            },
+            error: function () {
+                toastr.warning("Error", "获取数据url列表失败");
             }
-        }
-        // document.querySelectorAll(".sweet-confirm").onclick = function () {
-        //     let id = this.getAttribute('name');
-        //     console.log(id);
-        //     swal({
-        //         title: "确定删除数据:" + id + " 吗 ?",
-        //         text: "删除后就不可恢复 !!",
-        //         type: "warning",
-        //         showCancelButton: !0,
-        //         confirmButtonColor: "#DD6B55",
-        //         confirmButtonText: "确定, 删除它 !!",
-        //         closeOnConfirm: !1
-        //     }, function () {
-        //         swal("已删除 !!", "Hey, 已删除数据:" + id + " !!", "success")
-        //     })
-        // }
+        });
+    });
+
+
+    $(document).ready(function () {
+
+        $(document).on("click", ".dataModifyBtn", function () {
+            let index = this.getAttribute('name');
+            let filename = url_list[index].split('/')[url_list[index].split('/').length - 1];
+            let label = filename.split('.')[0];
+            console.log(index);
+            console.log(filename);
+            $('#dataModifyModal').find('#dsModifyModalTitle').empty().append('图片 Id: ' + index);
+            $('#dataModifyModal').find('#image_orig_name').val(filename);
+            $('#dataModifyModal').find('#dataModifyModalLable').val(label);
+            $('#dataModifyModal').find('#image_index').val(index);
+            $('#dataModifyModal').modal('show');
+        });
+        $(document).on("click", ".sweet-confirm", function () {
+            let index = this.getAttribute('name');
+            let filename = url_list[index].split('/')[url_list[index].split('/').length - 1];
+            let label = filename.split('.')[0];
+            console.log(index);
+            console.log(filename);
+            swal({
+                title: "确定删除数据:" + filename + " 吗 ?",
+                text: "删除后就不可恢复 !!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确定, 删除它 !!",
+                closeOnConfirm: !1
+            }, function () {
+                let map = {
+                    'dataset_id': this_dataset_id,
+                    'image_orig_name': filename
+                };
+                $.ajax({
+                    url: "/delete_image",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(map),
+                    success: function (result) {
+                        console.log(result);
+                        if (result.success == 1) {
+                            $('#card_item' + index).empty();
+                            $('#card_item' + index).remove();
+                            toastr.success("Success", "File name:" + filename + " 数据删除成功!");
+
+                        } else {
+                            toastr.warning("Warning", result.msg);
+                        }
+                    },
+                    error: function () {
+                        toastr.error("Error", "File name:" + filename + " 数据删除失败!");
+                    }
+                });
+                swal("开始删除!", "File name:" + filename + " 数据开始删除!", "success");
+            });
+        });
+
+        $('#dataModifyModalSaveBtn').click(function () {
+            let image_orig_name = $('#dataModifyModal').find('#image_orig_name').val();
+            let newLabel = $('#dataModifyModal').find('#dataModifyModalLable').val();
+            let index = $('#dataModifyModal').find('#image_index').val();
+            let map = null;
+            if (!checkIsNullOrEmpty(newLabel)) {
+                toastr.warning("Error", "图片的label不正确!");
+                return;
+            }
+            map = {
+                'dataset_id': this_dataset_id,
+                'image_orig_name': image_orig_name,
+                'newLabel': newLabel
+            };
+            $('#dataModifyModal').modal('hide');
+            $.ajax({
+                url: "/update_image",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(map),
+                success: function (result) {
+                    if (result.success == 1) {
+                        $('#card_image_label' + index).empty().append(newLabel);
+                        toastr.success("Success", "Id:" + index + " 图片信息更新成功!");
+
+                    } else {
+                        toastr.warning("Warning", result.msg);
+                    }
+                },
+                error: function () {
+                    toastr.error("Error", "Id:" + index + " 图片信息更新失败!");
+                }
+            });
+
+        })
 
     });
+
 
 </script>
 </body>

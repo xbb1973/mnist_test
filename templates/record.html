@@ -15,12 +15,14 @@
     <!--    <link href="{{ url_for('static', filename='quix/plugins/pg-calendar/css/pignose.calendar.min.css') }}" rel="stylesheet">-->
     <!-- Chartist -->
     <link rel="stylesheet" href="{{ url_for('static', filename='quix/plugins/chartist/css/chartist.min.css') }}">
-    <!--    <link rel="stylesheet" href="{{ url_for('static', filename='quix/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">-->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='quix/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
     <!-- Custom Stylesheet -->
     <!--      <link href="{{ url_for('static', filename='lib/glyphicons/css/bootstrap.css') }}" rel="stylesheet">-->
     <!-- Tables -->
-    <link href="{{ url_for('static', filename='quix/plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
+    <link href="{{ url_for('static', filename='quix/plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}"
+          rel="stylesheet">
+    <link href="{{ url_for('static', filename='quix/plugins/toastr/css/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='quix/css/style.css') }}" rel="stylesheet">
 
     <!--    <link href="{{ url_for('static', filename='lib/fileinput/css/fileinput.min.css') }}" rel="stylesheet">-->
@@ -99,7 +101,7 @@
             <ul class="metismenu" id="menu">
                 <li class="nav-label">验证</li>
                 <li>
-                    <a href="{{ url_for('main')}}" aria-expanded="false">
+                    <a href="{{ url_for('main') }}" aria-expanded="false">
                         <i class="icon-badge menu-icon"></i><span class="nav-text">验证</span>
                     </a>
                 </li>
@@ -109,9 +111,9 @@
                         <i class="icon-graph menu-icon"></i> <span class="nav-text">训练</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ url_for('train')}}">新建训练</a></li>
-                        <li><a href="{{ url_for('datalist')}}">数据源</a></li>
-                        <li><a href="{{ url_for('dashboard')}}">控制面板</a></li>
+                        <li><a href="{{ url_for('train') }}">新建训练</a></li>
+                        <li><a href="{{ url_for('datalist') }}">数据源</a></li>
+                        <li><a href="{{ url_for('dashboard') }}">控制面板</a></li>
                     </ul>
                 </li>
             </ul>
@@ -130,9 +132,9 @@
         <div class="row page-titles mx-0">
             <div class="col p-md-0">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url_for('dashboard')}}">Train</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url_for('dashboard')}}">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Record:xxx</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}">Train</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Record:{{ train_id }}</a></li>
                 </ol>
             </div>
         </div>
@@ -140,38 +142,43 @@
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-12 m-b-30">
-                    <h4 class="d-inline">Record xxx <span class="badge badge-pill badge-success">正在进行</span></h4>
-                    <p class="text-muted">使用数据源 xxx</p>
+                <div class="col-12 m-b-30" id="train_brief_card">
+                    <h4 class="d-inline">Record {{ train_id }} <span class="label label-pill label-success"
+                                                                     id="train_status">正在进行</span></h4>
+                    <p class="text-muted">使用数据源 {{ train_dataset_id }}</p>
                     <div class="card card-widget">
                         <div class="card-body">
                             <h5 class="text-muted">Record Overview </h5>
-                            <h2 class="mt-4">已运行xxx分钟</h2>
+                            <h2 class="mt-4" id="train_running_time">已运行{{ train_create_time }}</h2>
                             <h5 class="text-muted">操作 </h5>
                             <div class="button-group">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-success">开始</button>
                                     <button type="button" class="btn btn-primary">暂停</button>
                                     <button type="button" class="btn btn-warning">重置</button>
-                                    <button type="button" class="btn btn-danger">取消</button>
                                 </div>
                             </div>
                             <hr>
-                            <div class="mt-4">
-                                <h4>第xx轮进度:</h4>
-                                <h6>Online Order <span class="pull-right">30%</span></h6>
+                            <div class="mt-4" id="train_now_progressbar">
+                                <h4 id="train_now_epoch_num">第xx轮进度:</h4>
+                                <h6>Online step <span class="pull-right" id="train_now_step_progress_text">30%</span>
+                                </h6>
                                 <div class="progress mb-3" style="height: 7px">
-                                    <div class="progress-bar bg-primary" style="width: 30%;" role="progressbar"><span
-                                            class="sr-only">30% Order</span>
+                                    <div class="progress-bar bg-primary" id="train_now_step_progress_bar"
+                                         style="width: 30%;" role="progressbar"><span
+                                            class="sr-only"></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4" id="train_all_progressbar">
                                 <h4>总进度:</h4>
-                                <h6 class="m-t-10 text-muted">Offline Order <span class="pull-right">50%</span></h6>
+                                <h6 class="m-t-10 text-muted">Offline epoch <span class="pull-right"
+                                                                                  id="train_now_epoch_progress_text">50%</span>
+                                </h6>
                                 <div class="progress mb-3" style="height: 7px">
-                                    <div class="progress-bar bg-success" style="width: 50%;" role="progressbar"><span
-                                            class="sr-only">50% Order</span>
+                                    <div class="progress-bar bg-success" id="train_now_epoch_progress_bar"
+                                         style="width: 50%;" role="progressbar"><span
+                                            class="sr-only"></span>
                                     </div>
                                 </div>
                             </div>
@@ -183,16 +190,26 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">每轮训练时长</h4>
-                            <div id="smil-animations" class="ct-chart ct-golden-section"></div>
+                            <h4 class="card-title">每轮时长</h4>
+                            <div id="took_time_chart" class="ct-chart ct-golden-section"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">每轮训练准确率</h4>
-                            <div id="chart-with-area" class="ct-chart ct-golden-section"></div>
+                            <h4 class="card-title">每轮Acc</h4>
+                            <div id="acc_scatter_diagram" class="ct-chart ct-golden-section"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">每轮Loss</h4>
+                            <div id="loss_chart" class="ct-chart ct-golden-section"></div>
                         </div>
                     </div>
                 </div>
@@ -201,20 +218,25 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">每轮训练数据</h4>
+                            <h4 class="card-title">最近训练数据</h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Record id</th>
+                                        <th>Update time</th>
+                                        <th>DS id</th>
+                                        <th>CKPT id</th>
+                                        <th>Epoch</th>
+                                        <th>Step</th>
+                                        <th>Step/Steps</th>
+                                        <th>Acc</th>
+                                        <th>Loss</th>
+                                        <th>Modal</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="task_recent_record_tb">
                                     <tr>
                                         <td>Tiger Nixon</td>
                                         <td>System Architect</td>
@@ -223,463 +245,19 @@
                                         <td>2011/04/25</td>
                                         <td>$320,800</td>
                                     </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brielle Williamson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td>2012/12/02</td>
-                                        <td>$372,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Herrod Chandler</td>
-                                        <td>Sales Assistant</td>
-                                        <td>San Francisco</td>
-                                        <td>59</td>
-                                        <td>2012/08/06</td>
-                                        <td>$137,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rhona Davidson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>Tokyo</td>
-                                        <td>55</td>
-                                        <td>2010/10/14</td>
-                                        <td>$327,900</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Colleen Hurst</td>
-                                        <td>Javascript Developer</td>
-                                        <td>San Francisco</td>
-                                        <td>39</td>
-                                        <td>2009/09/15</td>
-                                        <td>$205,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sonya Frost</td>
-                                        <td>Software Engineer</td>
-                                        <td>Edinburgh</td>
-                                        <td>23</td>
-                                        <td>2008/12/13</td>
-                                        <td>$103,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jena Gaines</td>
-                                        <td>Office Manager</td>
-                                        <td>London</td>
-                                        <td>30</td>
-                                        <td>2008/12/19</td>
-                                        <td>$90,560</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Quinn Flynn</td>
-                                        <td>Support Lead</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2013/03/03</td>
-                                        <td>$342,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Charde Marshall</td>
-                                        <td>Regional Director</td>
-                                        <td>San Francisco</td>
-                                        <td>36</td>
-                                        <td>2008/10/16</td>
-                                        <td>$470,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Haley Kennedy</td>
-                                        <td>Senior Marketing Designer</td>
-                                        <td>London</td>
-                                        <td>43</td>
-                                        <td>2012/12/18</td>
-                                        <td>$313,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tatyana Fitzpatrick</td>
-                                        <td>Regional Director</td>
-                                        <td>London</td>
-                                        <td>19</td>
-                                        <td>2010/03/17</td>
-                                        <td>$385,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michael Silva</td>
-                                        <td>Marketing Designer</td>
-                                        <td>London</td>
-                                        <td>66</td>
-                                        <td>2012/11/27</td>
-                                        <td>$198,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Paul Byrd</td>
-                                        <td>Chief Financial Officer (CFO)</td>
-                                        <td>New York</td>
-                                        <td>64</td>
-                                        <td>2010/06/09</td>
-                                        <td>$725,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gloria Little</td>
-                                        <td>Systems Administrator</td>
-                                        <td>New York</td>
-                                        <td>59</td>
-                                        <td>2009/04/10</td>
-                                        <td>$237,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012/10/13</td>
-                                        <td>$132,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dai Rios</td>
-                                        <td>Personnel Lead</td>
-                                        <td>Edinburgh</td>
-                                        <td>35</td>
-                                        <td>2012/09/26</td>
-                                        <td>$217,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jenette Caldwell</td>
-                                        <td>Development Lead</td>
-                                        <td>New York</td>
-                                        <td>30</td>
-                                        <td>2011/09/03</td>
-                                        <td>$345,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yuri Berry</td>
-                                        <td>Chief Marketing Officer (CMO)</td>
-                                        <td>New York</td>
-                                        <td>40</td>
-                                        <td>2009/06/25</td>
-                                        <td>$675,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Caesar Vance</td>
-                                        <td>Pre-Sales Support</td>
-                                        <td>New York</td>
-                                        <td>21</td>
-                                        <td>2011/12/12</td>
-                                        <td>$106,450</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Doris Wilder</td>
-                                        <td>Sales Assistant</td>
-                                        <td>Sidney</td>
-                                        <td>23</td>
-                                        <td>2010/09/20</td>
-                                        <td>$85,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Angelica Ramos</td>
-                                        <td>Chief Executive Officer (CEO)</td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2009/10/09</td>
-                                        <td>$1,200,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gavin Joyce</td>
-                                        <td>Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>42</td>
-                                        <td>2010/12/22</td>
-                                        <td>$92,575</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jennifer Chang</td>
-                                        <td>Regional Director</td>
-                                        <td>Singapore</td>
-                                        <td>28</td>
-                                        <td>2010/11/14</td>
-                                        <td>$357,650</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brenden Wagner</td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011/06/07</td>
-                                        <td>$206,850</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fiona Green</td>
-                                        <td>Chief Operating Officer (COO)</td>
-                                        <td>San Francisco</td>
-                                        <td>48</td>
-                                        <td>2010/03/11</td>
-                                        <td>$850,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shou Itou</td>
-                                        <td>Regional Marketing</td>
-                                        <td>Tokyo</td>
-                                        <td>20</td>
-                                        <td>2011/08/14</td>
-                                        <td>$163,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michelle House</td>
-                                        <td>Integration Specialist</td>
-                                        <td>Sidney</td>
-                                        <td>37</td>
-                                        <td>2011/06/02</td>
-                                        <td>$95,400</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Suki Burks</td>
-                                        <td>Developer</td>
-                                        <td>London</td>
-                                        <td>53</td>
-                                        <td>2009/10/22</td>
-                                        <td>$114,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Prescott Bartlett</td>
-                                        <td>Technical Author</td>
-                                        <td>London</td>
-                                        <td>27</td>
-                                        <td>2011/05/07</td>
-                                        <td>$145,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gavin Cortez</td>
-                                        <td>Team Leader</td>
-                                        <td>San Francisco</td>
-                                        <td>22</td>
-                                        <td>2008/10/26</td>
-                                        <td>$235,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Martena Mccray</td>
-                                        <td>Post-Sales support</td>
-                                        <td>Edinburgh</td>
-                                        <td>46</td>
-                                        <td>2011/03/09</td>
-                                        <td>$324,050</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Unity Butler</td>
-                                        <td>Marketing Designer</td>
-                                        <td>San Francisco</td>
-                                        <td>47</td>
-                                        <td>2009/12/09</td>
-                                        <td>$85,675</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Howard Hatfield</td>
-                                        <td>Office Manager</td>
-                                        <td>San Francisco</td>
-                                        <td>51</td>
-                                        <td>2008/12/16</td>
-                                        <td>$164,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hope Fuentes</td>
-                                        <td>Secretary</td>
-                                        <td>San Francisco</td>
-                                        <td>41</td>
-                                        <td>2010/02/12</td>
-                                        <td>$109,850</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vivian Harrell</td>
-                                        <td>Financial Controller</td>
-                                        <td>San Francisco</td>
-                                        <td>62</td>
-                                        <td>2009/02/14</td>
-                                        <td>$452,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Timothy Mooney</td>
-                                        <td>Office Manager</td>
-                                        <td>London</td>
-                                        <td>37</td>
-                                        <td>2008/12/11</td>
-                                        <td>$136,200</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jackson Bradshaw</td>
-                                        <td>Director</td>
-                                        <td>New York</td>
-                                        <td>65</td>
-                                        <td>2008/09/26</td>
-                                        <td>$645,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Olivia Liang</td>
-                                        <td>Support Engineer</td>
-                                        <td>Singapore</td>
-                                        <td>64</td>
-                                        <td>2011/02/03</td>
-                                        <td>$234,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bruno Nash</td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>38</td>
-                                        <td>2011/05/03</td>
-                                        <td>$163,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sakura Yamamoto</td>
-                                        <td>Support Engineer</td>
-                                        <td>Tokyo</td>
-                                        <td>37</td>
-                                        <td>2009/08/19</td>
-                                        <td>$139,575</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Thor Walton</td>
-                                        <td>Developer</td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td>2013/08/11</td>
-                                        <td>$98,540</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Finn Camacho</td>
-                                        <td>Support Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>47</td>
-                                        <td>2009/07/07</td>
-                                        <td>$87,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Serge Baldwin</td>
-                                        <td>Data Coordinator</td>
-                                        <td>Singapore</td>
-                                        <td>64</td>
-                                        <td>2012/04/09</td>
-                                        <td>$138,575</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Zenaida Frank</td>
-                                        <td>Software Engineer</td>
-                                        <td>New York</td>
-                                        <td>63</td>
-                                        <td>2010/01/04</td>
-                                        <td>$125,250</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Zorita Serrano</td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>56</td>
-                                        <td>2012/06/01</td>
-                                        <td>$115,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jennifer Acosta</td>
-                                        <td>Junior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>43</td>
-                                        <td>2013/02/01</td>
-                                        <td>$75,650</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cara Stevens</td>
-                                        <td>Sales Assistant</td>
-                                        <td>New York</td>
-                                        <td>46</td>
-                                        <td>2011/12/06</td>
-                                        <td>$145,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hermione Butler</td>
-                                        <td>Regional Director</td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2011/03/21</td>
-                                        <td>$356,250</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lael Greer</td>
-                                        <td>Systems Administrator</td>
-                                        <td>London</td>
-                                        <td>21</td>
-                                        <td>2009/02/27</td>
-                                        <td>$103,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jonas Alexander</td>
-                                        <td>Developer</td>
-                                        <td>San Francisco</td>
-                                        <td>30</td>
-                                        <td>2010/07/14</td>
-                                        <td>$86,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shad Decker</td>
-                                        <td>Regional Director</td>
-                                        <td>Edinburgh</td>
-                                        <td>51</td>
-                                        <td>2008/11/13</td>
-                                        <td>$183,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michael Bruce</td>
-                                        <td>Javascript Developer</td>
-                                        <td>Singapore</td>
-                                        <td>29</td>
-                                        <td>2011/06/27</td>
-                                        <td>$183,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Donna Snider</td>
-                                        <td>Customer Support</td>
-                                        <td>New York</td>
-                                        <td>27</td>
-                                        <td>2011/01/25</td>
-                                        <td>$112,000</td>
-                                    </tr>
+
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Record id</th>
+                                        <th>Update time</th>
+                                        <th>DS id</th>
+                                        <th>Epoch</th>
+                                        <th>Step</th>
+                                        <th>Step prog</th>
+                                        <th>Acc</th>
+                                        <th>Loss</th>
+                                        <th>Status</th>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -744,7 +322,7 @@
 <!-- Tables -->
 <script src="{{ url_for('static', filename='quix/plugins/tables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ url_for('static', filename='quix/plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ url_for('static', filename='quix/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script>
+{#<script src="{{ url_for('static', filename='quix/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script>#}
 
 <!--<script src="{{ url_for('static', filename='quix/js/dashboard/dashboard-1.js') }}"></script>-->
 
@@ -755,152 +333,496 @@
 <!--<script src="{{ url_for('static', filename='lib/fileinput/js/fileinput.min.js') }}"></script>-->
 <!--<script src="{{ url_for('static', filename='lib/fileinput/js/locales/zh.js') }}"></script>-->
 
+<!-- Toastr -->
+<script src="{{ url_for('static', filename='quix/plugins/toastr/js/toastr.min.js') }}"></script>
+<script src="{{ url_for('static', filename='quix/plugins/toastr/js/toastr.init.js') }}"></script>
+
 <script type="text/javascript">
+    let bad_request_count = 0;
+    let task_info_last_update_time = null;
     $(function () {
         console.log("js init");
+        toastr.options = {
+            timeOut: 5e3,
+            closeButton: !0,
+            debug: !1,
+            newestOnTop: !0,
+            progressBar: !0,
+            positionClass: "toast-bottom-right",
+            preventDuplicates: !0,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+            tapToDismiss: !1
 
-        new Chartist.Line('#chart-with-area', {
-            labels: [1, 2, 3, 4, 5, 6, 7, 8],
+        };
+
+        //Simple line chart
+        let loss_chart = new Chartist.Line('#loss_chart', {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
             series: [
-                [5, 9, 7, 8, 5, 3, 5, 4]
+                [12, 9, 7, 8, 5],
+                [2, 1, 3.5, 7, 3],
+                [1, 3, 4, 5, 6]
+            ]
+        }, {
+            fullWidth: true,
+            chartPadding: {
+                right: 40
+            },
+            plugins: [
+                Chartist.plugins.tooltip()
+            ]
+        });
+
+        var took_time_chart = new Chartist.Line('#took_time_chart', {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            series: [
+                [1, 5, 2, 5, 4, 3],
+                [2, 3, 4, 8, 1, 2],
+                [5, 4, 3, 2, 1, 0.5]
             ]
         }, {
             low: 0,
             showArea: true,
-            plugins: [
-                Chartist.plugins.tooltip()
-            ]
+            showPoint: false,
+            showLine: false,
+            fullWidth: true
         });
 
-        var chart = new Chartist.Line('#smil-animations', {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-            series: [
-                [12, 9, 7, 8, 5, 4, 6, 2, 3, 3, 4, 6],
-                [4, 5, 3, 7, 3, 5, 5, 3, 4, 4, 5, 5],
-                [5, 3, 4, 5, 6, 3, 3, 4, 5, 6, 3, 4],
-                [3, 4, 5, 6, 7, 6, 4, 5, 6, 7, 6, 3]
-            ]
+
+        //Line Scatter Diagram
+        var times = function (n) {
+            return Array.apply(null, new Array(n));
+        };
+
+        var data = times(52).map(Math.random).reduce(function (data, rnd, index) {
+            data.labels.push(index + 1);
+            data.series.forEach(function (series) {
+                series.push(Math.random() * 100)
+            });
+
+            return data;
         }, {
-            low: 0,
-            plugins: [
-                Chartist.plugins.tooltip()
-            ]
+            labels: [],
+            series: times(4).map(function () {
+                return new Array()
+            })
         });
 
-        // Let's put a sequence number aside so we can use it in the event callbacks
-        var seq = 0,
-            delays = 80,
-            durations = 500;
+        var options = {
+            showLine: false,
+            axisX: {
+                labelInterpolationFnc: function (value, index) {
+                    return index % 13 === 0 ? 'W' + value : null;
+                }
+            }
+        };
 
-        // Once the chart is fully created we reset the sequence
-        chart.on('created', function () {
-            seq = 0;
+        var responsiveOptions = [
+            ['screen and (min-width: 640px)', {
+                axisX: {
+                    labelInterpolationFnc: function (value, index) {
+                        return index % 4 === 0 ? 'W' + value : null;
+                    }
+                }
+            }]
+        ];
+
+        let acc_scatter_diagram = new Chartist.Line('#acc_scatter_diagram', data, options, responsiveOptions);
+
+
+        // 更新 并获取数据
+
+        // 更新进度条
+        let this_train_id = {{ train_id }};
+        let this_task_id = '{{ train_task_id }}';
+        {#let this_status_url = '{{ task_info_url }}';#}
+        let this_task_status = 'PREPARE';
+        let this_took_seconds = {{ task_took_seconds }};
+        let timer_auto_running = true;
+        let ajax_auto_get_train_info = true;
+        update_progress($('#train_brief_card'));
+        runningTime($('#train_brief_card').find('#train_running_time'));
+
+        function update_progress(card_elem) {
+            {#console.log(ajax_auto_get_train_info);#}
+            // getJSON()方法是JQuery内置方法，这里向Location中对应的url发起请求，即请求「/status/<task_id>」
+            if (bad_request_count >= 5) {
+                ajax_auto_get_train_info = false;
+                timer_auto_running = false;
+            }
+            if (ajax_auto_get_train_info) {
+                $.ajax({
+                    url: '/task',
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        'train_id': this_train_id,
+                        'task_id': this_task_id,
+                        'last_update_time': task_info_last_update_time
+                    }),
+                    success: function (result) {
+                        if (result.success == 1) {
+                            bad_request_count = 0;
+                            let data = result.train.task_running_info;
+                            task_info_last_update_time = result.train.update_time;
+                            this_task_status = data['train_status'];
+                            {#console.log(this_task_status);#}
+                            console.log(result.train);
+                            if (this_task_status == 'PREPARE') {
+                                card_elem.find('#train_status').removeClass().addClass('label label-pill label-secondary').empty().append('PREPARE');
+                                if (timer_auto_running == false) {
+                                    timer_auto_running = true;
+                                    runningTime(card_elem.find('#train_running_time'));
+                                }
+                                card_elem.find('button.btn-success').attr("disabled", "disabled");
+                                card_elem.find('button.btn-primary').removeAttr("disabled");
+                                card_elem.find('button.btn-warning').removeAttr("disabled");
+                                card_elem.find('button.btn-danger').removeAttr("disabled");
+                            } else if (this_task_status == 'PROGRESS') {
+                                card_elem.find('#train_status').removeClass().addClass('label label-pill label-secondary').empty().append('PROGRESS');
+                                if (timer_auto_running == false) {
+                                    timer_auto_running = true;
+                                    console.log("progress start runing");
+                                    runningTime(card_elem.find('#train_running_time'));
+                                }
+                                card_elem.find('button.btn-success').attr("disabled", "disabled");
+                                card_elem.find('button.btn-primary').removeAttr("disabled");
+                                card_elem.find('button.btn-warning').removeAttr("disabled");
+                                card_elem.find('button.btn-danger').removeAttr("disabled");
+
+                            } else if (this_task_status == 'SUCCESS') {
+                                card_elem.find('#train_status').removeClass().addClass('label label-pill label-success').empty().append('SUCCESS');
+                                if (timer_auto_running == true) {
+                                    timer_auto_running = false;
+                                }
+                                card_elem.find('button.btn-success').attr("disabled", "disabled");
+                                card_elem.find('button.btn-primary').attr("disabled", "disabled");
+                                card_elem.find('button.btn-warning').removeAttr("disabled");
+                                card_elem.find('button.btn-danger').attr("disabled", "disabled");
+
+                            } else if (this_task_status == 'PENDING') {
+                                card_elem.find('#train_status').removeClass().addClass('label label-pill label-warning').empty().append('PENDING');
+                                if (timer_auto_running == true) {
+                                    timer_auto_running = false;
+                                }
+                                card_elem.find('button.btn-success').removeAttr("disabled")
+                                card_elem.find('button.btn-primary').attr("disabled", "disabled");
+                                card_elem.find('button.btn-warning').removeAttr("disabled");
+                                card_elem.find('button.btn-danger').removeAttr("disabled");
+                            } else if (this_task_status == 'FAILURE') {
+                                card_elem.find('#train_status').removeClass().addClass('label label-pill label-danger').empty().append('FAILURE');
+                                if (timer_auto_running == true) {
+                                    timer_auto_running = false;
+                                }
+                                card_elem.find('button.btn-success').removeAttr("disabled")
+                                card_elem.find('button.btn-primary').attr("disabled", "disabled");
+                                card_elem.find('button.btn-warning').removeAttr("disabled");
+                                card_elem.find('button.btn-danger').removeAttr("disabled");
+                            } else if (this_task_status == 'REVOKED') {
+                                card_elem.find('#train_status').removeClass().addClass('label label-pill label-warning').empty().append('TERMINATED');
+                                if (timer_auto_running == true) {
+                                    timer_auto_running = false;
+                                }
+                                card_elem.find('button.btn-success').removeAttr("disabled")
+                                card_elem.find('button.btn-primary').attr("disabled", "disabled");
+                                card_elem.find('button.btn-warning').removeAttr("disabled");
+                                card_elem.find('button.btn-danger').removeAttr("disabled");
+                            } else if (this_task_status == 'NONE') {
+                                card_elem.find('#train_status').removeClass().addClass('label label-pill label-danger').empty().append('NONE');
+                                if (timer_auto_running == true) {
+                                    timer_auto_running = false;
+                                }
+                                card_elem.find('button.btn-success').removeAttr("disabled")
+                                card_elem.find('button.btn-primary').attr("disabled", "disabled");
+                                card_elem.find('button.btn-warning').removeAttr("disabled");
+                                card_elem.find('button.btn-danger').removeAttr("disabled");
+                            } else {
+                                this_task_status = 'ERROR';
+                                card_elem.find('#train_status').removeClass().addClass('label label-pill label-dark').empty().append('ERROR');
+                                if (timer_auto_running == true) {
+                                    timer_auto_running = false;
+                                }
+                                card_elem.find('button.btn-success').removeAttr("disabled")
+                                card_elem.find('button.btn-primary').attr("disabled", "disabled");
+                                card_elem.find('button.btn-warning').removeAttr("disabled");
+                                card_elem.find('button.btn-danger').removeAttr("disabled");
+                            }
+                            //计算进度
+                            {#console.log(data['train_epoch']);#}
+                            {#console.log(data['train_epochs']);#}
+                            let epoch_percent = parseInt(data['train_epoch'] * 100 / data['train_epochs']) + '%';
+                            let step_percent = parseInt(data['train_step'] * 100 / data['train_steps']) + '%';
+                            {#console.log(epoch_percent);#}
+                            {#console.log(step_percent);#}
+                            //更新进度条
+                            card_elem.find('#train_now_epoch_num').empty().append('第' + data['train_epoch'] + "/" + data['train_epochs'] + '轮进度:');
+                            card_elem.find('#train_now_step_progress_text').empty().append(step_percent);
+                            card_elem.find('#train_now_step_progress_bar').css('width', step_percent);
+
+                            card_elem.find('#train_now_epoch_progress_text').empty().append(epoch_percent);
+                            card_elem.find('#train_now_epoch_progress_bar').css('width', epoch_percent);
+                            if (this_task_status == 'PREPARE' || this_task_status == 'PROGRESS' || this_task_status == 'PENDING') {
+                                {#console.log("ajax_auto_get_train_info=true");#}
+                                ajax_auto_get_train_info = true;
+                            } else {
+                                {#console.log("ajax_auto_get_train_info=false");#}
+                                ajax_auto_get_train_info = false;
+                            }
+                            {#console.log(result.train.show_chart_info);#}
+                            if (result.train.show_chart_info != null) {
+                                update_train_chart_info_show(result.train.show_chart_info);
+                            }
+                        } else if (result.success == 2) {
+                            task_info_last_update_time = result.train.update_time;
+                            {#console.log(result.train.show_chart_info);#}
+                            if (result.train.show_chart_info != null) {
+                                update_train_chart_info_show(result.train.show_chart_info);
+                            }
+                        } else {
+                            toastr.warning("Warning", result.msg);
+                        }
+                    },
+                    error: function () {
+                        bad_request_count++;
+                        toastr.error("Error", "获取任务信息列表失败");
+                    }
+                });
+            }
+            // 2秒后再次运行
+            setTimeout(function () {
+                update_progress(card_elem);
+            }, 2000);
+        }
+
+        let chart_node_count_1 = 0;
+        let chart_values_1 = [];
+        let chart_labels_1 = [];
+        let chart_show_node_1 = 7;
+
+        let chart_node_count_2 = 0;
+        let chart_values_2 = [];
+        let chart_labels_2 = [];
+        let chart_show_node_2 = 12;
+
+        let chart_node_count_3 = 0;
+        let chart_values_3 = [];
+        let chart_labels_3 = [];
+        let chart_show_node_3 = 12;
+
+        function update_train_chart_info_show(task_info) {
+            let chart_info = task_info['show_chart'];
+            {#console.log(chart_info);#}
+            $.each(chart_info, function (index, data) {
+                chart_values_1.push(data['took_time']);
+                chart_labels_1.push(data['record_id'].toString().substr(-3));
+                chart_values_2.push(data['train_acc']);
+                chart_labels_2.push(data['record_id'].toString().substr(-3));
+                chart_values_3.push(data['train_loss']);
+                chart_labels_3.push(data['record_id'].toString().substr(-3));
+                let ut_time = data['update_time'].split(' ')[1];
+
+                if (chart_values_1.length > chart_show_node_1) {
+                    chart_values_1.splice(0, chart_values_1.length - chart_show_node_1);
+                }
+                if (chart_labels_1.length > chart_show_node_1) {
+                    chart_labels_1.splice(0, chart_labels_1.length - chart_show_node_1);
+                }
+                if (chart_values_2.length > chart_show_node_2) {
+                    chart_values_2.splice(0, chart_values_2.length - chart_show_node_2);
+                }
+                if (chart_labels_2.length > chart_show_node_2) {
+                    chart_labels_2.splice(0, chart_labels_2.length - chart_show_node_2);
+                }
+                if (chart_values_3.length > chart_show_node_3) {
+                    chart_values_3.splice(0, chart_values_3.length - chart_show_node_3);
+                }
+                if (chart_labels_3.length > chart_show_node_3) {
+                    chart_labels_3.splice(0, chart_labels_3.length - chart_show_node_3);
+                }
+            });
+            //Took time chart
+            let chart_update_data = {
+                labels: chart_labels_1,
+                series: [chart_values_1]
+            };
+            {#console.log(chart_update_data);#}
+            took_time_chart.update(chart_update_data);
+
+            //Acc diagram
+            let acc_update_data = {
+                labels: chart_labels_2,
+                series: [chart_values_2]
+            };
+            acc_scatter_diagram.update(acc_update_data);
+
+            //Loss chart
+            let loss_update_data = {
+                labels: chart_labels_3,
+                series: [chart_values_3]
+            };
+            loss_chart.update(loss_update_data);
+
+            // table
+            let epoch_percent = '0%';
+            let step_percent = '0%';
+            $('#task_recent_record_tb').empty();
+            $.each(task_info['recent_all_data'], function (index, data) {
+                epoch_percent = parseInt(data['train_epoch'] * 100 / data['train_epochs']) + '%';
+                step_percent = parseInt(data['train_step'] * 100 / data['train_steps']) + '%';
+                let tr = $('<tr></tr>');
+                let id_td = $('<td></td>').append(data['record_id']);
+                let ut_td = $('<td></td>').append(data['update_time']);
+                let ds_td = $('<td></td>').append(data['train_dataset_id']);
+                let ckpt_td = $('<td></td>').append(data['train_ckpt_id']);
+                let epoch_td = $('<td></td>').append(data['train_epoch']);
+                let step_td = $('<td></td>').append(data['train_step']);
+                let step_steps_td = $('<td></td>').append(step_percent);
+                let acc_td = $('<td></td>').append(data['train_acc']);
+                let loss_td = $('<td></td>').append(data['train_loss']);
+                let modal_td = $('<td></td>').append(data['train_modal']);
+                let status_td = $('<td></td>').append(data['train_status']);
+                tr.append(id_td).append(ut_td).append(ds_td).append(ckpt_td).append(epoch_td)
+                    .append(step_td).append(step_steps_td).append(acc_td).append(loss_td).append(modal_td).append(status_td);
+
+                $('#task_recent_record_tb').append(tr);
+            });
+
+
+        }
+
+
+        $('#train_brief_card').find('button.btn-success').click(function () {
+            console.log('start_train');
+            bad_request_count = 0;
+            $.ajax({
+                url: '/restart/' + this_train_id,
+                type: "GET",
+                success: function (result) {
+                    {#console.log(result)#}
+                    if (result.success == 1) {
+                        {#console.log("success")#}
+                        this_train_id = result.train_id;
+                        this_task_id = result.train_task_id;
+                        {#this_status_url = "/task/" + result.taskId + '/' + this_train_id;#}
+                        this_task_status = 'PREPARE';
+                        {#timer_auto_running = true;#}
+                        ajax_auto_get_train_info = true;
+                        {#console.log(ajax_auto_get_train_info)#}
+                        toastr.success("重启训练成功!", "Task id:" + this_task_id);
+                    } else {
+                        toastr.error("重启训练失败!", result.msg);
+                    }
+                },
+                error: function () {
+                    toastr.error("重启训练错误!", "Train id:" + this_train_id);
+                }
+
+            });
         });
 
-        // On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
-        chart.on('draw', function (data) {
-            seq++;
-
-            if (data.type === 'line') {
-                // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
-                data.element.animate({
-                    opacity: {
-                        // The delay when we like to start the animation
-                        begin: seq * delays + 1000,
-                        // Duration of the animation
-                        dur: durations,
-                        // The value where the animation should start
-                        from: 0,
-                        // The value where it should end
-                        to: 1
-                    }
-                });
-            } else if (data.type === 'label' && data.axis === 'x') {
-                data.element.animate({
-                    y: {
-                        begin: seq * delays,
-                        dur: durations,
-                        from: data.y + 100,
-                        to: data.y,
-                        // We can specify an easing function from Chartist.Svg.Easing
-                        easing: 'easeOutQuart'
-                    }
-                });
-            } else if (data.type === 'label' && data.axis === 'y') {
-                data.element.animate({
-                    x: {
-                        begin: seq * delays,
-                        dur: durations,
-                        from: data.x - 100,
-                        to: data.x,
-                        easing: 'easeOutQuart'
-                    }
-                });
-            } else if (data.type === 'point') {
-                data.element.animate({
-                    x1: {
-                        begin: seq * delays,
-                        dur: durations,
-                        from: data.x - 10,
-                        to: data.x,
-                        easing: 'easeOutQuart'
+        $('#train_brief_card').find('button.btn-primary').click(function () {
+            bad_request_count = 0;
+            if (this_task_status == 'PREPARE' || this_task_status == 'PROGRESS' || this_task_status == 'PENDING') {
+                $.ajax({
+                    url: '/stop/' + this_train_id,
+                    type: "GET",
+                    success: function (result) {
+                        {#console.log(result)#}
+                        if (result.success == 1) {
+                            this_task_status = 'STOP';
+                            timer_auto_running = false;
+                            toastr.success("停止训练成功!", result.msg);
+                        } else {
+                            toastr.error("停止训练失败!", result.msg);
+                        }
                     },
-                    x2: {
-                        begin: seq * delays,
-                        dur: durations,
-                        from: data.x - 10,
-                        to: data.x,
-                        easing: 'easeOutQuart'
-                    },
-                    opacity: {
-                        begin: seq * delays,
-                        dur: durations,
-                        from: 0,
-                        to: 1,
-                        easing: 'easeOutQuart'
+                    error: function () {
+                        toastr.error("停止训练错误!", "Train id:" + this_train_id);
                     }
                 });
-            } else if (data.type === 'grid') {
-                // Using data.axis we get x or y which we can use to construct our animation definition objects
-                var pos1Animation = {
-                    begin: seq * delays,
-                    dur: durations,
-                    from: data[data.axis.units.pos + '1'] - 30,
-                    to: data[data.axis.units.pos + '1'],
-                    easing: 'easeOutQuart'
-                };
 
-                var pos2Animation = {
-                    begin: seq * delays,
-                    dur: durations,
-                    from: data[data.axis.units.pos + '2'] - 100,
-                    to: data[data.axis.units.pos + '2'],
-                    easing: 'easeOutQuart'
-                };
-
-                var animations = {};
-                animations[data.axis.units.pos + '1'] = pos1Animation;
-                animations[data.axis.units.pos + '2'] = pos2Animation;
-                animations['opacity'] = {
-                    begin: seq * delays,
-                    dur: durations,
-                    from: 0,
-                    to: 1,
-                    easing: 'easeOutQuart'
-                };
-
-                data.element.animate(animations);
+            } else {
+                console.log("当前任务状态不能stop_train");
             }
         });
 
-        // For the sake of the example we update the chart every time it's created with a delay of 10 seconds
-        chart.on('created', function () {
-            if (window.__exampleAnimateTimeout) {
-                clearTimeout(window.__exampleAnimateTimeout);
-                window.__exampleAnimateTimeout = null;
-            }
-            window.__exampleAnimateTimeout = setTimeout(chart.update.bind(chart), 12000);
+        $('#train_brief_card').find('button.btn-warning').click(function () {
+            bad_request_count = 0;
+            console.log('reset_train');
+            $.ajax({
+                url: '/reset/' + this_train_id,
+                type: "GET",
+                success: function (result) {
+                    {#console.log(result)#}
+                    if (result.success == 1) {
+                        {#console.log("success")#}
+                          this_train_id = result.train_id;
+                        this_task_id =result.train_task_id;
+                        {#this_status_url = "/task/" + result.train_task_id + '/' + this_train_id;#}
+                        this_task_status = 'PREPARE';
+                        timer_auto_running = true;
+                        ajax_auto_get_train_info = true;
+                        {#console.log(ajax_auto_get_train_info)#}
+                        toastr.success("重置训练成功!", "Task id:" + this_task_id);
+                    } else {
+                        toastr.error("重置训练失败!", result.msg);
+                    }
+                },
+                error: function () {
+                    toastr.error("重置训练错误!", "Train id:" + this_train_id);
+                }
+
+            });
         });
+
+        function runningTime(elem) {
+            if (timer_auto_running == false) {
+                return;
+            }
+            let leve1 = this_took_seconds;
+            let hour = Math.floor(leve1 / (3600));
+            let level2 = leve1 % (3600);
+            let minute = Math.floor(level2 / (60));
+            let level3 = level2 % (60);
+            let second = level3;
+
+            let Timer = "已运行" + hour + "小时" + minute + "分" + second + "秒";
+            //在页面上插入日期
+            elem.empty().append(Timer);
+            setTimeout(function () {
+                this_took_seconds++;
+                runningTime(elem);
+            }, 1000);
+        }
+
+        function currentTime(elem) {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            month = month < 10 ? ("0" + month) : month;
+            day = day < 10 ? ("0" + day) : day;
+            hour = hour < 10 ? ("0" + hour) : hour;
+            minute = minute < 10 ? ("0" + minute) : minute;
+            second = second < 10 ? ("0" + second) : second;
+            var Timer = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+            //在页面上插入日期
+
+            elem.html(Timer);
+            setTimeout(function () {
+                currentTime();
+            }, 1000);
+        }
 
 
     });

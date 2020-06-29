@@ -20,6 +20,10 @@
     <!--          href="{{ url_for('static', filename='quix/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">-->
     <!-- Custom Stylesheet -->
     <!--      <link href="{{ url_for('static', filename='lib/glyphicons/css/bootstrap.css') }}" rel="stylesheet">-->
+
+    <!-- Sweetalert Stylesheet -->
+    <link href="{{ url_for('static', filename='quix/plugins/sweetalert/css/sweetalert.css') }}" rel="stylesheet">
+
     <link href="{{ url_for('static', filename='quix/plugins/toastr/css/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='quix/css/style.css') }}" rel="stylesheet">
 
@@ -99,7 +103,7 @@
             <ul class="metismenu" id="menu">
                 <li class="nav-label">验证</li>
                 <li>
-                    <a href="{{ url_for('main')}}" aria-expanded="false">
+                    <a href="{{ url_for('main') }}" aria-expanded="false">
                         <i class="icon-badge menu-icon"></i><span class="nav-text">验证</span>
                     </a>
                 </li>
@@ -110,8 +114,8 @@
                     </a>
                     <ul aria-expanded="true" class="collapse in">
                         <li class="active"><a href="javascript:void(0)" class="active">新建训练</a></li>
-                        <li><a href="{{ url_for('datalist')}}">数据源</a></li>
-                        <li><a href="{{ url_for('dashboard')}}">控制面板</a></li>
+                        <li><a href="{{ url_for('datalist') }}">数据源</a></li>
+                        <li><a href="{{ url_for('dashboard') }}">控制面板</a></li>
                     </ul>
                 </li>
             </ul>
@@ -167,18 +171,25 @@
                                         <p class="text-muted m-b-20">可以选择一个ckpt开始训练,如无需要,<code>可忽略(新开始)</code>!
                                         </p>
                                     </div>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
+                                    <div class="table-responsive" style="overflow:scroll;">
+                                        <table class="table table-striped" id="ckpt_table">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Name</th>
-                                                <th>Status</th>
-                                                <th>Date</th>
-                                                <th>Price</th>
+                                                <th>CKPT id</th>
+                                                <th>Train id</th>
+                                                <th>DS id</th>
+                                                <th>Create time</th>
+                                                <th>Tag</th>
+                                                <th>Epoch</th>
+                                                <th>Step</th>
+                                                <th>Acc</th>
+                                                <th>Loss</th>
+                                                <th>Modal</th>
+                                                <th>File nmae</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="ckpt_list_area">
                                             <tr>
                                                 <th><input type="checkbox" id="chk1"></th>
                                                 <td>Kolor Tea Shirt For Man</td>
@@ -206,21 +217,21 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="text-left">1 - 20 of 568</div>
-                                        </div>
-                                        <div class="col-5">
-                                            <div class="btn-group float-right">
-                                                <button class="btn btn-gradient" type="button"><i
-                                                        class="fa fa-angle-left"></i>
-                                                </button>
-                                                <button class="btn btn-dark" type="button"><i
-                                                        class="fa fa-angle-right"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {#                                    <div class="row">#}
+                                    {#                                        <div class="col-7">#}
+                                    {#                                            <div class="text-left" id="ckpt">1 - 20 of 568</div>#}
+                                    {#                                        </div>#}
+                                    {#                                        <div class="col-5">#}
+                                    {#                                            <div class="btn-group float-right">#}
+                                    {#                                                <button class="btn btn-gradient" type="button"><i#}
+                                    {#                                                        class="fa fa-angle-left"></i>#}
+                                    {#                                                </button>#}
+                                    {#                                                <button class="btn btn-dark" type="button"><i#}
+                                    {#                                                        class="fa fa-angle-right"></i>#}
+                                    {#                                                </button>#}
+                                    {#                                            </div>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
                                 </div>
                             </div>
                             <div class="row">
@@ -300,7 +311,12 @@
 <script src="{{ url_for('static', filename='quix/plugins/toastr/js/toastr.min.js') }}"></script>
 <script src="{{ url_for('static', filename='quix/plugins/toastr/js/toastr.init.js') }}"></script>
 
+<!-- Sweetalert -->
+<script src="{{ url_for('static', filename='quix/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+
 <script type="text/javascript">
+    {#let choose_ckpt_id = null;#}
+    {#let choose_ds_id = null;#}
     $(function () {
         console.log("js init");
 
@@ -324,102 +340,68 @@
 
         };
 
-        $("#validateImageInput").fileinput({
-            uploadUrl: "up_photo",  //还写具体上传地址才显示可拖拽区域
-            language: 'zh', //设置语言
-            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
-            uploadAsync: false, //默认异步上传
-            browseIcon: '<i class="fa fa-folder-open"></i>&nbsp;',
-            browseClass: "btn mb-1 btn-info", //按钮样式
-            removeIcon: '<i class="fa fa-trash"></i>',
-            removeClass: 'btn mb-1 btn-flat btn-danger',
-            cancelIcon: '<i class="fa fa-ban"></i>',
-            cancelClass: 'btn mb-1 btn-info',
-            pauseIcon: '<i class="fa fa-pause-circle"></i>',
-            pauseClass: 'btn mb-1 btn-info',
-            uploadIcon: '<i class="fa fa-upload"></i>',
-            uploadClass: 'btn mb-1 btn-info',
-            previewZoomButtonIcons: {
-                prev: '<i class="fa fa-caret-left"></i>',
-                next: '<i class="fa fa-caret-right"></i>',
-                toggleheader: '<i class="fa fa-arrows-v"></i>',
-                fullscreen: '<i class="fa fa-arrows-alt"></i>',
-                borderless: '<i class="fa fa-expand"></i>',
-                close: '<i class="fa fa-times"></i>'
-            },
-            previewZoomButtonClasses: {
-                prev: 'btn btn-navigate',
-                next: 'btn btn-navigate',
-                toggleheader: 'btn btn-sm btn-kv btn-default btn-outline-secondary',
-                fullscreen: 'btn btn-sm btn-kv btn-default btn-outline-secondary',
-                borderless: 'btn btn-sm btn-kv btn-default btn-outline-secondary',
-                close: 'btn btn-sm btn-kv btn-default btn-outline-secondary'
-            },
-            fileActionSettings: {
-                removeIcon: '<i class="fa fa-trash"></i>',
-                removeClass: 'btn btn-sm btn-kv btn-default btn-outline-secondary',
-                removeErrorClass: 'btn btn-sm btn-kv btn-danger',
-                removeTitle: 'Remove file',
-                uploadIcon: '<i class="fa fa-upload"></i>',
-                uploadClass: 'btn btn-sm btn-kv btn-default btn-outline-secondary',
-                uploadTitle: 'Upload file',
-                uploadRetryIcon: '<i class="fa fa-repeat"></i>',
-                uploadRetryTitle: 'Retry upload',
-                downloadIcon: '<i class="fa fa-arrow-circle-down"></i>',
-                downloadClass: 'btn btn-sm btn-kv btn-default btn-outline-secondary',
-                downloadTitle: 'Download file',
-                zoomIcon: '<i class="fa fa-search-plus"></i>',
-                zoomClass: 'btn btn-sm btn-kv btn-default btn-outline-secondary',
-                zoomTitle: 'View Details',
-                dragIcon: '<i class="fa fa-arrows"></i>',
-                dragClass: 'text-info',
-                dragTitle: 'Move / Rearrange',
-                dragSettings: {},
-                indicatorNew: '<i class="fa fa-plus-circle text-warning"></i>',
-                indicatorSuccess: '<i class="fa fa-check-circle text-success"></i>',
-                indicatorError: '<i class="fa fa-exclamation-circle text-danger"></i>',
-                indicatorLoading: '<i class="fa fa-hourglass-half text-muted"></i>',
-                indicatorPaused: '<i class="fa fa-pause text-primary"></i>',
-            },
-            autoReplace: true,
-            maxFileCount: 1, //表示允许同时上传的最大文件个数
-            maxTotalFileCount: 0,
-            enctype: 'multipart/form-data',
-            maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
-            // minImageWidth: 500, //图片的最小宽度
-            // minImageHeight: 500,//图片的最小高度
-            // maxImageWidth: 2500,//图片的最大宽度
-            // maxImageHeight: 4000,//图片的最大高度
-            resizeImage: false,
-            resizePreference: 'width',
-            showUpload: true, //是否显示上传按钮
-            showRemove: true, //显示移除按钮
-            showPreview: true, //是否显示预览
-            previewFileType: ['jpg', 'gif', 'png', 'jpeg'],
-            showCaption: true,//是否显示长条标题
-            dropZoneEnabled: false,//是否显示拖拽区域
-            // autoReplace: true,
-            // msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
-            msgAjaxError: 'Something went wrong with the {operation} operation. Please try again later!', //错误提示
-            // uploadExtraData: {"destination": "blogsss"},//上传携带参数
-            uploadExtraData: function () {
-                console.log("uploadExtraData");
-                let ckpt = $("#list_tab_ckpt").find('a[class*=active]').text();
-                console.log(ckpt);
-                return {'ckpt': ckpt};
-            }
-        }).on("filepreupload", function (event, files) {  //选中要上传的文件后回调
-            // $(this).fileinput("upload");  //自动上传
+        function get_dslist_and_ckptlist() {
+            $.ajax({
+                url: "/get_ds_info_list",
+                type: "GET",
+                success: function (result) {
+                    if (result.success == 1) {
+                        let data_dict_list = result.datalist;
+                        $('#dataSourceSelector').empty().append($('<option></option>').attr("value", "").attr('selected', 'selected').attr('disabled', 'disabled').append('请选择或者新建一个数据集'));
+                        $.each(data_dict_list, function (index, data) {
+                            $('#dataSourceSelector').append($('<option></option>').attr('value', data.dataset_id).append('Id' + data.dataset_id + '|' + data.dataset_name + " - " + data.dataset_tag));
+                        });
+                    } else {
+                        toastr.warning("Warning", result.msg);
+                    }
+                },
+                error: function () {
+                    toastr.error("Error", "获取数据集信息列表失败");
+                }
+            });
 
-        }).on("filebatchuploadcomplete", function (event, data) {
-            toastr.success("数据上传成功!", "Validate");
-            if (data.response) {
-                console.log("处理成功!");
-                console.log(data.response);
-            }
-        }).on("fileuploaderror", function (event, data) {
-            toastr.error("数据上传错误," + data.response, "Train");
-        });
+            $.ajax({
+                url: "/get_ckpt_list",
+                type: "GET",
+                success: function (result) {
+                    if (result.success == 1) {
+                        let ckpt_list = result.ckptlist;
+                        $('#ckpt_list_area').empty();
+
+                        $.each(ckpt_list, function (index, data) {
+                            console.log(data);
+                            console.log(index);
+                            let tr = $('<tr></tr>');
+                            let ck_td = $('<td></td>').append($('<input>').attr('type', 'checkbox').attr('id', 'chpt_ckecbox_grp').attr('name', data['ckpt_id']).addClass('check_item'));
+                            let ckpt_id_td = $('<td></td>').append(data['ckpt_id']);
+                            let train_id_td = $('<td></td>').append(data['train_id']);
+                            let ds_td = $('<td></td>').append(data['dataset_id']);
+                            let ct_td = $('<td></td>').append(data['create_time']);
+                            let tag_td = $('<td></td>').append(data['ckpt_tag']);
+                            let epoch_td = $('<td></td>').append(data['epoch']);
+                            let step_td = $('<td></td>').append(data['step']);
+                            let acc_td = $('<td></td>').append(data['acc']);
+                            let loss_td = $('<td></td>').append(data['loss']);
+                            let modal_td = $('<td></td>').append(data['modal']);
+                            let file_name_td = $('<td></td>').append(data['ckpt_name']);
+                            tr.append(ck_td).append(ckpt_id_td).append(train_id_td).append(ds_td).append(ct_td)
+                                .append(tag_td).append(epoch_td).append(step_td).append(acc_td).append(loss_td).append(modal_td).append(file_name_td);
+
+                            $('#ckpt_list_area').append(tr);
+                        });
+                    } else {
+                        toastr.warning("Warning", result.msg);
+                    }
+                },
+                error: function () {
+                    toastr.error("Error", "获取CKPT列表失败");
+                }
+            });
+
+
+        }
+
+        get_dslist_and_ckptlist();
 
 
     });
@@ -431,31 +413,65 @@
         return (value != null && value != undefined && !reg.test(value))
     }
 
+
     $('#startTrainBtn').click(function () {
         let dataSourceId = $('#dataSourceSelector').val();
-        console.log(dataSourceId);
+        let ckpt_id = null;
+        let ckpt_warning = ' 没有选择Ckpt';
+        if ($(".check_item:checked").length > 0) {
+            ckpt_id = $(".check_item:checked")[0].getAttribute('name');
+            ckpt_warning = ' 选择的Ckpt Id:' + ckpt_id;
+        }
+
         if (checkIsNullOrEmpty(dataSourceId)) {
-            let ckptId = -1;
-            let map = {
-                'dataSourceId':dataSourceId,
-                'ckptId':ckptId
-            };
-            $.ajax({
-                url: "/start_train",
-                type: 'POST',
-                dataType:'json',
-                data: {'dataSourceId':dataSourceId,'ckptId':ckptId},
-                success: function (result) {
-                    toastr.success("开始训练!", result.msg);
-                },
-                error: function (result) {
-                    toastr.error("出现错误!", "Ajax出错!");
-                }
+            swal({
+                title: "开始训练吗?",
+                text: "确定选择的数据集Id:" + dataSourceId + " " + ckpt_warning,
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确定开始!",
+                closeOnConfirm: !1
+            }, function () {
+                $.ajax({
+                    url: "/start_train",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {'train_dataset_id': dataSourceId, 'train_ckpt_id': ckpt_id, 'train_modal': 'B'},
+                    success: function (data, status, request) {
+                        if (data.success = 1) {
+                            toastr.success("开始训练!", data.msg);
+                            let train_id = data.train_id;
+                            swal("开始训练!", "Dataset Id:" + dataSourceId + " " + ckpt_warning, "success");
+                            window.open('/record/'+train_id, '_blank');
+                        } else {
+                            toastr.error("出现错误!", data.msg);
+                        }
+                    },
+                    error: function (result) {
+                        toastr.error("出现错误!", "Ajax出错!");
+                    }
+                });
             });
 
         } else {
             toastr.warning("请选择一个数据源!", "Train");
         }
+
+    });
+
+    $(document).ready(function () {
+        $(document).on("click", ".check_item", function () {
+            let id = this.getAttribute('name');
+            {#console.log(id);#}
+            let elems = $(".check_item:checked");
+            for (let i = 0; i < elems.length; i++) {
+                console.log(elems[i].getAttribute('name'));
+                if (elems[i].getAttribute('name') != id) {
+                    $(elems[i]).prop("checked", false);
+                }
+            }
+        });
     });
 
 </script>

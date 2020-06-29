@@ -11,13 +11,16 @@
     <!--    <link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap-3.3.7-dist/css/bootstrap.css') }}">-->
     <!--    <link href="{{ url_for('static', filename='lib/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">-->
 
-        <!-- Pignose Calender -->
-<!--    <link href="{{ url_for('static', filename='quix/plugins/pg-calendar/css/pignose.calendar.min.css') }}" rel="stylesheet">-->
+    <!-- Pignose Calender -->
+    <link href="{{ url_for('static', filename='quix/plugins/pg-calendar/css/pignose.calendar.min.css') }}"
+          rel="stylesheet">
     <!-- Chartist -->
-<!--    <link rel="stylesheet" href="{{ url_for('static', filename='quix/plugins/chartist/css/chartist.min.css') }}">-->
-<!--    <link rel="stylesheet" href="{{ url_for('static', filename='quix/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='quix/plugins/chartist/css/chartist.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='quix/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
     <!-- Custom Stylesheet -->
     <!--      <link href="{{ url_for('static', filename='lib/glyphicons/css/bootstrap.css') }}" rel="stylesheet">-->
+    <link href="{{ url_for('static', filename='quix/plugins/toastr/css/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='quix/css/style.css') }}" rel="stylesheet">
 
     <!--    <link href="{{ url_for('static', filename='lib/fileinput/css/fileinput.min.css') }}" rel="stylesheet">-->
@@ -96,7 +99,7 @@
             <ul class="metismenu" id="menu">
                 <li class="nav-label">验证</li>
                 <li>
-                    <a href="{{ url_for('main')}}" aria-expanded="false">
+                    <a href="{{ url_for('main') }}" aria-expanded="false">
                         <i class="icon-badge menu-icon"></i><span class="nav-text">验证</span>
                     </a>
                 </li>
@@ -106,8 +109,8 @@
                         <i class="icon-graph menu-icon"></i> <span class="nav-text">训练</span>
                     </a>
                     <ul aria-expanded="false" class="collapse in">
-                        <li><a href="{{ url_for('train')}}">新建训练</a></li>
-                        <li><a href="{{ url_for('datalist')}}">数据源</a></li>
+                        <li><a href="{{ url_for('train') }}">新建训练</a></li>
+                        <li><a href="{{ url_for('datalist') }}">数据源</a></li>
                         <li class="active"><a href="javascript:void(0)" class="active">控制面板</a></li>
                     </ul>
                 </li>
@@ -140,8 +143,8 @@
                         <div class="card-body">
                             <h3 class="card-title text-white">总训练次数</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white">4565</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
+                                <h2 class="text-white" id="head_card_count_text">4565</h2>
+                                <p class="text-white mb-0" id="head_card_count_ut">Jan - March 2019</p>
                             </div>
                             <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
                         </div>
@@ -152,8 +155,8 @@
                         <div class="card-body">
                             <h3 class="card-title text-white">总训练时长</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white">$ 8541</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
+                                <h2 class="text-white" id="head_card_took_text">$ 8541</h2>
+                                <p class="text-white mb-0" id="head_card_took_ut">Jan - March 2019</p>
                             </div>
                             <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
                         </div>
@@ -162,10 +165,10 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="card gradient-3">
                         <div class="card-body">
-                            <h3 class="card-title text-white">数据源个数</h3>
+                            <h3 class="card-title text-white">数据集个数</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white">4565</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
+                                <h2 class="text-white" id="head_card_ds_count_text">4565</h2>
+                                <p class="text-white mb-0" id="head_card_ds_count_ut">Jan - March 2019</p>
                             </div>
                             <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                         </div>
@@ -174,10 +177,10 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="card gradient-4">
                         <div class="card-body">
-                            <h3 class="card-title text-white">Check point个数</h3>
+                            <h3 class="card-title text-white">总数据量</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white">99%</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
+                                <h2 class="text-white" id="head_card_ds_size_text">99%</h2>
+                                <p class="text-white mb-0" id="head_card_ds_size_ut">Jan - March 2019</p>
                             </div>
                             <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
                         </div>
@@ -186,29 +189,29 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-xl-7 col-lg-7 col-sm-7 col-xxl-7">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body pb-0 d-flex justify-content-between">
                                     <div>
-                                        <h4 class="mb-1">训练轮数统计/准确率统计</h4>
-                                        <p>Total Earnings of the Month</p>
-                                        <h3 class="m-0">$ 12,555</h3>
+                                        <h4 class="mb-1">最近训练任务</h4>
+                                        <p id="mid_card_info">Recent Task</p>
+                                        {#                                        <h3 class="m-0" id="mid_card_info">$ 12,555</h3>#}
                                     </div>
-                                    <div>
-                                        <ul>
-                                            <li class="d-inline-block mr-3"><a class="text-dark" href="#">Day</a></li>
-                                            <li class="d-inline-block mr-3"><a class="text-dark" href="#">Week</a></li>
-                                            <li class="d-inline-block"><a class="text-dark" href="#">Month</a></li>
-                                        </ul>
-                                    </div>
+                                    {#                                    <div>#}
+                                    {#                                        <ul>#}
+                                    {#                                            <li class="d-inline-block mr-3"><a class="text-dark" href="#">Day</a></li>#}
+                                    {#                                            <li class="d-inline-block mr-3"><a class="text-dark" href="#">Week</a></li>#}
+                                    {#                                            <li class="d-inline-block"><a class="text-dark" href="#">Month</a></li>#}
+                                    {#                                        </ul>#}
+                                    {#                                    </div>#}
                                 </div>
                                 <div class="chart-wrapper">
-                                    <canvas id="chart_widget_2"></canvas>
+                                    <canvas id="chart_widget_main_line"></canvas>
                                 </div>
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between" id="mid_card_footer">
                                         <div class="w-100 mr-2">
                                             <h6>模型 A</h6>
                                             <div class="progress" style="height: 6px">
@@ -227,220 +230,82 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-xl-5 col-lg-5 col-sm-5 col-xxl-5">
 
-            <div class="row">
-                <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">正在进行的训练</h4>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped verticle-middle">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Task</th>
-                                        <th scope="col">Progress</th>
-                                        <th scope="col">Start</th>
-                                        <th scope="col">Label</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="{{ url_for('record',recordId=1)}}">Train record 1</a></td>
-                                        <td>
-                                            <div class="progress" style="height: 10px">
-                                                <div class="progress-bar gradient-1" style="width: 70%;"
-                                                     role="progressbar"><span class="sr-only">70% Complete</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Apr 20,2018</td>
-                                        <td><span class="label gradient-1 btn-rounded">70%</span>
-                                        </td>
-                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                                     data-original-title="Edit"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-                                                                                                   data-toggle="tooltip"
-                                                                                                   data-placement="top"
-                                                                                                   title=""
-                                                                                                   data-original-title="Close"><i
-                                                class="fa fa-close color-danger"></i></a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="{{ url_for('record',recordId=2)}}">Train record 2</a></td>
-                                        <td>
-                                            <div class="progress" style="height: 10px">
-                                                <div class="progress-bar gradient-2" style="width: 70%;"
-                                                     role="progressbar"><span class="sr-only">70% Complete</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>May 27,2018</td>
-                                        <td><span class="label gradient-2 btn-rounded">70%</span>
-                                        </td>
-                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                                     data-original-title="Edit"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-                                                                                                   data-toggle="tooltip"
-                                                                                                   data-placement="top"
-                                                                                                   title=""
-                                                                                                   data-original-title="Close"><i
-                                                class="fa fa-close color-danger"></i></a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="{{ url_for('record',recordId=3)}}">Train record 3</a></td>
-                                        <td>
-                                            <div class="progress" style="height: 10px">
-                                                <div class="progress-bar gradient-3" style="width: 70%;"
-                                                     role="progressbar"><span class="sr-only">70% Complete</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>May 18,2018</td>
-                                        <td><span class="label gradient-3 btn-rounded">70%</span>
-                                        </td>
-                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                                     data-original-title="Edit"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-                                                                                                   data-toggle="tooltip"
-                                                                                                   data-placement="top"
-                                                                                                   title=""
-                                                                                                   data-original-title="Close"><i
-                                                class="fa fa-close color-danger"></i></a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="{{ url_for('record',recordId=4)}}">Train record 4</a></td>
-                                        <td>
-                                            <div class="progress" style="height: 10px">
-                                                <div class="progress-bar gradient-4" style="width: 70%;"
-                                                     role="progressbar"><span class="sr-only">70% Complete</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Mar 27,2018</td>
-                                        <td><span class="label gradient-4 btn-rounded">70%</span>
-                                        </td>
-                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                                     data-original-title="Edit"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-                                                                                                   data-toggle="tooltip"
-                                                                                                   data-placement="top"
-                                                                                                   title=""
-                                                                                                   data-original-title="Close"><i
-                                                class="fa fa-close color-danger"></i></a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="{{ url_for('record',recordId=5)}}">Train record 5</a></td>
-                                        <td>
-                                            <div class="progress" style="height: 10px">
-                                                <div class="progress-bar gradient-9" style="width: 70%;"
-                                                     role="progressbar"><span class="sr-only">70% Complete</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Jun 28,2018</td>
-                                        <td><span class="label gradient-9 btn-rounded">70%</span>
-                                        </td>
-                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                                     data-original-title="Edit"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-                                                                                                   data-toggle="tooltip"
-                                                                                                   data-placement="top"
-                                                                                                   title=""
-                                                                                                   data-original-title="Close"><i
-                                                class="fa fa-close color-danger"></i></a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="{{ url_for('record',recordId=6)}}">Train record 6</a></td>
-                                        <td>
-                                            <div class="progress" style="height: 10px">
-                                                <div class="progress-bar gradient-2" style="width: 70%;"
-                                                     role="progressbar"><span class="sr-only">70% Complete</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Aug 20,2018</td>
-                                        <td><span class="label gradient-2 btn-rounded">70%</span>
-                                        </td>
-                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                                     data-original-title="Edit"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#"
-                                                                                                   data-toggle="tooltip"
-                                                                                                   data-placement="top"
-                                                                                                   title=""
-                                                                                                   data-original-title="Close"><i
-                                                class="fa fa-close color-danger"></i></a></span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                        <div class="chart-wrapper mb-4">
+                            <div class="px-4 pt-4 d-flex justify-content-between">
+                                <div>
+                                    <h4>服务器情况</h4>
+                                    <p id="mem_card_updatetime">Last 6 Month</p>
+                                </div>
+                                <div>
+                                    {#                                    <span><i class="fa fa-caret-up text-success"></i></span>#}
+                                    {#                                    <h4 class="d-inline-block text-success">720</h4>#}
+                                    <p class="d-inline-block text-danger" id="mem_used_change_text">+120.5(5.0%)</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div id="chart_widget_mem_used_line" class="ct-chart ct-golden-section"></div>
+{#                                <canvas id="chart_widget_mem_used_line"></canvas>#}
+                            </div>
+                        </div>
+                        <div class="card-body border-top pt-4">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <ul>
+                                        总内存:<li id="mem_total_text">5% Negative Feedback</li>
+                                        可用内存:<li id="mem_available_text">95% Positive Feedback</li>
+                                    </ul>
+                                    {#                                    <div>#}
+                                    {#                                        <h5>Customer Feedback</h5>#}
+                                    {#                                        <h3>385749</h3>#}
+                                    {#                                    </div>#}
+                                </div>
+                                <div class="col-sm-4">
+                                    <small>内存使用率:</small>
+                                    <div id="chart_widget_mem_used_pie"></div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <small>CPU使用率:</small>
+                                    <div id="chart_widget_cpu_used_pie"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+            </div>
+{#            <div class="col-lg-6">#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h4 class="card-title">SVG Path animation</h4>#}
+{#                        <div id="svg-animation" class="ct-chart ct-golden-section"></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+            <div class="row">
+                <div class=" col-xl-12 col-lg-12 col-sm-12 col-xxl-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">
-                                <h4>已经完成的</h4>
-                            </div>
+                            <h4 class="card-title">最近的训练</h4>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-bordered table-striped verticle-middle">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                        <th>Price</th>
+                                        <th scope="col">Task id</th>
+                                        <th scope="col">创建时间</th>
+                                        <th scope="col">已运行时间</th>
+                                        <th scope="col">Epoch进度</th>
+                                        <th scope="col">Step进度</th>
+                                        <th scope="col">Acc</th>
+                                        <th scope="col">Loss</th>
+                                        <th scope="col">当前状态</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th><input type="checkbox" id="chk1"></th>
-                                        <td>Kolor Tea Shirt For Man</td>
-                                        <td><span class="badge badge-primary px-2">Sale</span>
-                                        </td>
-                                        <td>January 22</td>
-                                        <td class="color-primary">$21.56</td>
-                                    </tr>
-                                    <tr>
-                                        <th><input type="checkbox" id="chk2"></th>
-                                        <td>Kolor Tea Shirt For Women</td>
-                                        <td><span class="badge badge-danger px-2">Tax</span>
-                                        </td>
-                                        <td>January 30</td>
-                                        <td class="color-success">$55.32</td>
-                                    </tr>
-                                    <tr>
-                                        <th>3</th>
-                                        <td>Blue Backpack For Baby</td>
-                                        <td><span class="badge badge-success px-2">Extended</span>
-                                        </td>
-                                        <td>January 25</td>
-                                        <td class="color-danger">$14.85</td>
-                                    </tr>
+                                    <tbody id="task_info_show_area">
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-7">
-                                    <div class="text-left">1 - 20 of 568</div>
-                                </div>
-                                <div class="col-5">
-                                    <div class="btn-group float-right">
-                                        <button class="btn btn-gradient" type="button"><i class="fa fa-angle-left"></i>
-                                        </button>
-                                        <button class="btn btn-dark" type="button"><i class="fa fa-angle-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -475,17 +340,19 @@
 <!--**********************************
     Scripts
 ***********************************-->
-<!--<script type="text/javascript" src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>-->
+<script type="text/javascript" src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>
 
 <script src="{{ url_for('static', filename='quix/plugins/common/common.min.js') }}"></script>
 <script src="{{ url_for('static', filename='quix/js/custom.min.js') }}"></script>
 <script src="{{ url_for('static', filename='quix/js/settings.js') }}"></script>
 <script src="{{ url_for('static', filename='quix/js/gleek.js') }}"></script>
 <script src="{{ url_for('static', filename='quix/js/styleSwitcher.js') }}"></script>
+
 <!-- Chartjs -->
 <script src="{{ url_for('static', filename='quix/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+
 <!-- Circle progress -->
-<!--<script src="{{ url_for('static', filename='quix/plugins/circle-progress/circle-progress.min.js') }}"></script>-->
+<script src="{{ url_for('static', filename='quix/plugins/circle-progress/circle-progress.min.js') }}"></script>
 <!-- Datamap -->
 <!--<script src="{{ url_for('static', filename='quix/plugins/d3v3/index.js') }}"></script>-->
 <!--<script src="{{ url_for('static', filename='quix/plugins/topojson/topojson.min.js') }}"></script>-->
@@ -497,11 +364,10 @@
 <!--<script src="{{ url_for('static', filename='quix/plugins/moment/moment.min.js') }}"></script>-->
 <!--<script src="{{ url_for('static', filename='quix/plugins/pg-calendar/js/pignose.calendar.min.js') }}"></script>-->
 <!-- ChartistJS -->
-<!--<script src="{{ url_for('static', filename='quix/plugins/chartist/js/chartist.min.js') }}"></script>-->
-<!--<script src="{{ url_for('static', filename='quix/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>-->
+<script src="{{ url_for('static', filename='quix/plugins/chartist/js/chartist.min.js') }}"></script>
+<script src="{{ url_for('static', filename='quix/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
 
-
-<!--<script src="{{ url_for('static', filename='quix/js/dashboard/dashboard-1.js') }}"></script>-->
+{#<!--<script src="{{ url_for('static', filename='quix/js/dashboard/dashboard-1.js') }}"></script>-->#}
 
 <!--<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>-->
 <script type="text/javascript" src="{{ url_for('static', filename='js/hwr.js') }}"></script>
@@ -510,27 +376,50 @@
 <!--<script src="{{ url_for('static', filename='lib/fileinput/js/fileinput.min.js') }}"></script>-->
 <!--<script src="{{ url_for('static', filename='lib/fileinput/js/locales/zh.js') }}"></script>-->
 
+<!-- Toastr -->
+<script src="{{ url_for('static', filename='quix/plugins/toastr/js/toastr.min.js') }}"></script>
+<script src="{{ url_for('static', filename='quix/plugins/toastr/js/toastr.init.js') }}"></script>
+
 <script type="text/javascript">
+
+    let global_task_list = null;
+    let global_statistics = null;
+    let statistics_last_update_time = null;
+    let this_main_chart_train_id = null;
+    let this_main_chart_train_id_need_change = true;
+    let bad_task_info_request_count = 0;
+    let bad_stat_info_request_count = 0;
     $(function () {
         console.log("js init");
+        toastr.options = {
+            timeOut: 5e3,
+            closeButton: !0,
+            debug: !1,
+            newestOnTop: !0,
+            progressBar: !0,
+            positionClass: "toast-bottom-right",
+            preventDuplicates: !0,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+            tapToDismiss: !1
 
+        };
 
-    });
-
-    (function ($) {
-        "use strict"
-        console.log('chart_widget_2');
-        let ctx = document.getElementById("chart_widget_2");
-        ctx.height = 280;
-        new Chart(ctx, {
+        let chart_map = {
             type: 'line',
             data: {
-                labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                labels: [],
                 type: 'line',
                 defaultFontFamily: 'Montserrat',
                 datasets: [{
-                    data: [0, 15, 57, 12, 85, 10, 50],
-                    label: "模型 B",
+                    data: [],
+                    label: "",
                     backgroundColor: '#847DFA',
                     borderColor: '#847DFA',
                     borderWidth: 0.5,
@@ -539,8 +428,8 @@
                     pointBorderColor: 'transparent',
                     pointBackgroundColor: '#847DFA',
                 }, {
-                    label: "模型 A",
-                    data: [0, 30, 5, 53, 15, 55, 0],
+                    label: "",
+                    data: [],
                     backgroundColor: '#F196B0',
                     borderColor: '#F196B0',
                     borderWidth: 0.5,
@@ -602,10 +491,369 @@
                     display: false,
                 }
             }
+        };
+
+        console.log('chart_widget_main_line');
+        let ctx = document.getElementById("chart_widget_main_line");
+        ctx.height = 280;
+        let mainCtxChart = new Chart(ctx, chart_map);
+
+        let chart_widget_mem_used_line = document.getElementById("chart_widget_mem_used_line");
+        chart_widget_mem_used_line.height = 130;
+        var memUsedChart = new Chartist.Line('#chart_widget_mem_used_line', {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            series: [
+                [1, 5, 2, 5, 4, 3],
+                [2, 3, 4, 8, 1, 2],
+                [5, 4, 3, 2, 1, 0.5]
+            ]
+        }, {
+            low: 0,
+            showArea: true,
+            showPoint: false,
+            fullWidth: true
+        });
+
+        {#let memUsedChart = new Chartist.Line(chart_widget_mem_used_line, {#}
+        {#    labels: ["1", "2", "3", "4", "5", "6", "7", "8"],#}
+        {#    series: [#}
+        {#        [4, 5, 1.5, 6, 7, 5.5, 5.8, 4.6]#}
+        {#    ]#}
+        {#}, {#}
+        {#    low: 0,#}
+        {#    showArea: !1,#}
+        {#    showPoint: !0,#}
+        {#    showLine: !0,#}
+        {#    fullWidth: !0,#}
+        {#    lineSmooth: !1,#}
+        {#    chartPadding: {#}
+        {#        top: 4,#}
+        {#        right: 4,#}
+        {#        bottom: -20,#}
+        {#        left: 4#}
+        {#    },#}
+        {#    axisX: {#}
+        {#        showLabel: !1,#}
+        {#        showGrid: !1,#}
+        {#        offset: 0#}
+        {#    },#}
+        {#    axisY: {#}
+        {#        showLabel: !1,#}
+        {#        showGrid: !1,#}
+        {#        offset: 0#}
+        {#    }#}
+        {#});#}
+
+        {#memUsedChart.on('draw', function(context) {#}
+		{#			  if(context.type === 'line') {#}
+		{#				context.element.attr({#}
+		{#				style: 'stroke: #F3BB45;'#}
+		{#				});#}
+		{#			  }#}
+		{#			  if(context.type === 'point') {#}
+		{#				context.element.attr({#}
+		{#				style: 'stroke: #F3BB45;'#}
+		{#				});}#}
+        {#});#}
+
+
+        let memPieChart = new Chartist.Pie("#chart_widget_mem_used_pie", {
+            series: [35, 65]
+        }, {
+            donut: !0,
+            donutWidth: 10,
+            startAngle: 0,
+            showLabel: !1,
+
+        });
+
+        let cpuPieChart = new Chartist.Pie("#chart_widget_cpu_used_pie", {
+            series: [35, 65]
+        }, {
+            donut: !0,
+            donutWidth: 10,
+            startAngle: 0,
+            showLabel: !1
         });
 
 
-    })(jQuery);
+        auto_get_statistics_info();
+
+        function auto_get_statistics_info() {
+            $.ajax({
+                url: "/get_statistics",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    'last_update_time': statistics_last_update_time,
+                    'this_main_chart_train_id': this_main_chart_train_id
+                }),
+                success: function (result) {
+                    if (result.success == 1) {
+                        global_statistics = result.statistics;
+                        bad_stat_info_request_count = 0;
+                        statistics_last_update_time = global_statistics['update_time'];
+                        if (global_statistics.this_main_chart_train_id_need_change != null) {
+                            this_main_chart_train_id_need_change = global_statistics.this_main_chart_train_id_need_change;
+                        }
+                        update_main_info_show(global_statistics);
+                        update_host_pc_stat_show(global_statistics);
+                    } else {
+                        toastr.warning("Warning", result.msg);
+                    }
+                },
+                error: function () {
+                    bad_stat_info_request_count++;
+                    toastr.error("Error", "获取主信息失败");
+                }
+            });
+            if (bad_stat_info_request_count <= 5) {
+                // 2秒后再次运行
+                setTimeout(function () {
+                    auto_get_statistics_info();
+                }, 2000);
+            } else {
+                toastr.error("Error", "失败的请求次数大于最大次数5次!暂停自动刷新!");
+                return;
+            }
+        }
+
+        let mem_used_chart_node_count = 0;
+        let mem_used_rate_line_chart_values = [];
+        let line_chart_labels = [];
+        let cpu_used_rate_line_chart_values = [];
+        let mem_used_line_chart_data = null;
+        let line_chart_show_node = 7;
+        let mem_last_update_value = null;
+        let cpu_last_update_value = null;
+
+        function update_host_pc_stat_show(data_map) {
+            if (mem_last_update_value != null) {
+                let mem_change = parseInt(data_map['mem_used']) - mem_last_update_value;
+                let mem_change_MB = Math.round(parseInt(mem_change) / (1024 * 1024));
+                if (mem_change_MB > 0) {
+                    $('#mem_used_change_text').removeClass().addClass('d-inline-block text-danger').empty().append('+' + mem_change_MB + 'MB');
+                } else {
+                    $('#mem_used_change_text').removeClass().addClass('d-inline-block text-success').empty().append('-' + mem_change_MB + 'MB');
+                }
+            }
+
+            let mem_percent = parseInt(data_map['mem_percent']);
+            let cpu_percent = parseInt(data_map['cpu']);
+
+            {#mem_used_rate_line_chart_values.push(Math.round(parseInt(data_map['mem_used']) / (1024 * 1024 * 1024)));#}
+            cpu_used_rate_line_chart_values.push(cpu_percent);
+            mem_used_rate_line_chart_values.push(mem_percent);
+            let ut_time = data_map['update_time'].split(' ')[1];
+
+            line_chart_labels.push(data_map['update_time'].split(':').pop());
+            if (mem_used_rate_line_chart_values.length > line_chart_show_node) {
+                mem_used_rate_line_chart_values.splice(0, mem_used_rate_line_chart_values.length - line_chart_show_node);
+            }
+            if (cpu_used_rate_line_chart_values.length > line_chart_show_node) {
+                cpu_used_rate_line_chart_values.splice(0, cpu_used_rate_line_chart_values.length - line_chart_show_node);
+            }
+            if (line_chart_labels.length > line_chart_show_node) {
+                line_chart_labels.splice(0, line_chart_labels.length - line_chart_show_node);
+            }
+            let mem_used_line_chart_data = {
+                labels: line_chart_labels,
+                series: [mem_used_rate_line_chart_values,cpu_used_rate_line_chart_values]
+            };
+            console.log(mem_used_line_chart_data);
+            memUsedChart.update(mem_used_line_chart_data);
+            {#svg_chart.update(mem_used_line_chart_data);#}
+            mem_last_update_value = parseInt(data_map['mem_used']);
+
+            $('#mem_total_text').empty().append(Math.round(parseInt(data_map['mem_total']) / (1024 * 1024)) + 'MB');
+            $('#mem_available_text').empty().append(Math.round(parseInt(data_map['mem_available']) / (1024 * 1024)) + 'MB');
+            $('#mem_card_updatetime').empty().append(data_map['update_time']);
+
+            memPieChart.update({
+                series: [mem_percent, 100 - mem_percent]
+            });
+            cpuPieChart.update({
+                series: [cpu_percent, 100 - cpu_percent]
+            });
+
+
+        }
+
+
+        let list = null;
+        let label_count = 0;
+
+        function update_main_info_show(data_map) {
+            console.log(data_map);
+            $('#head_card_count_text').empty().append(data_map['train_count']);
+            $('#head_card_count_ut').empty().append(data_map['update_time']);
+            $('#head_card_took_text').empty().append(data_map['train_took']);
+            $('#head_card_took_ut').empty().append(data_map['update_time']);
+            $('#head_card_ds_count_text').empty().append(data_map['ds_count']);
+            $('#head_card_ds_count_ut').empty().append(data_map['update_time']);
+            $('#head_card_ds_size_text').empty().append(data_map['ds_size']);
+            $('#head_card_ds_size_ut').empty().append(data_map['update_time']);
+
+
+            $('#mid_card_info').empty().append(data_map['update_time']);
+
+            list = data_map['show_chart'];
+            if (list.length > 0) {
+                $('#mid_card_footer').empty();
+            }
+            $.each(list, function (index_outer, item_list_outer) {
+                if (index_outer >= 1) {
+                    return;
+                }
+                $.each(item_list_outer, function (index_inner, item_list_inner) {
+                    if (index_inner == item_list_outer.length - 1) {
+                        mainCtxChart.config.data.labels.push(label_count);
+                        if (label_count > 7) {
+                            mainCtxChart.config.data.labels.splice(0, 1); // remove the label first
+                            mainCtxChart.config.data.datasets.forEach(function (dataset) {
+                                dataset.data.splice(0, 1);
+                            });
+                        }
+                        label_count++;
+                        console.log('label_count++    now count' + label_count);
+                    }
+                    mainCtxChart.config.data.datasets[index_outer].data.push(item_list_inner['train_acc']);
+                    mainCtxChart.config.data.datasets[index_outer].label = "Id " + item_list_inner['train_id'];
+                });
+                if (item_list_outer.length > 0) {
+
+                    let epoch_percent = parseInt(item_list_outer[item_list_outer.length - 1]['train_epoch'] * 100 / item_list_outer[item_list_outer.length - 1]['train_epochs']) + '%';
+                    let step_percent = parseInt(item_list_outer[item_list_outer.length - 1]['train_step'] * 100 / item_list_outer[item_list_outer.length - 1]['train_steps']) + '%';
+                    {#console.log(epoch_percent);#}
+                    {#console.log(step_percent);#}
+                    let color = null;
+                    if (index_outer % 2 == 0) {
+                        color = 'bg-primary';
+                    } else {
+                        color = 'bg-danger';
+                    }
+                    let footer = $('<div></div>').addClass('w-100 mr-2').append($('<h6></h6>').append('Id ' + item_list_outer[item_list_outer.length - 1]['train_id'])).append($('<div></div>').addClass('progress').attr('style', 'height: 6px').append($('<div></div>').addClass('progress-bar ' + color).attr('style', 'width:' + epoch_percent)));
+                    $('#mid_card_footer').append(footer);
+                }
+
+
+            });
+
+            mainCtxChart.update();
+        }
+
+
+        auto_get_task_info_list();
+
+        function auto_get_task_info_list() {
+            $.ajax({
+                url: "/get_recent_task_list",
+                type: "GET",
+                success: function (result) {
+                    if (result.success == 1) {
+                        global_task_list = result.task_list;
+                        bad_task_info_request_count = 0;
+                        update_task_info_show($('#task_info_show_area'), global_task_list);
+                    } else {
+                        toastr.warning("Warning", result.msg);
+                    }
+                },
+                error: function () {
+                    bad_task_info_request_count++;
+                    toastr.error("Error", "获取任务信息列表失败");
+                }
+            });
+            if (bad_task_info_request_count <= 5) {
+                // 2秒后再次运行
+                setTimeout(function () {
+                    auto_get_task_info_list();
+                }, 2000);
+            } else {
+                toastr.error("Error", "失败的请求次数大于最大次数5次!暂停自动刷新!");
+                return;
+            }
+        }
+
+        function update_task_info_show(elem, task_list) {
+            console.log('update_task_info_show');
+            console.log(task_list);
+            elem.empty();
+            $.each(task_list, function (index, data) {
+                let action_span = $('<span></span>');
+                let gradient_index = index % 9 + 1;
+                let epoch_percent = '0%';
+                let step_percent = '0%';
+                if (data['train_status'] == 'NEW' || data['train_status'] == 'PENDING' || data['train_status'] == 'PREPARE' || data['train_status'] == 'PROGRESS') {
+                    epoch_percent = parseInt(data['train_epoch'] * 100 / data['train_epochs']) + '%';
+                    step_percent = parseInt(data['train_step'] * 100 / data['train_steps']) + '%';
+                    if (data['train_epochs'] <= 0) {
+                        epoch_percent = '0%';
+                    }
+                    if (data['train_steps'] <= 0) {
+                        epoch_percent = '0%';
+                    }
+                    action_span.append($('<a></a>').attr('href', '#').attr('id', 'show_at_main_chart_btn').attr('data-toggle', 'tooltip').attr('data-placement', 'top').attr('title', 'Show it').attr('alt', '显示在主图').attr('name', data['train_id']).attr('data-original-title', 'Edit').append($('<i></i>').addClass('fa fa-area-chart color-muted m-r-5')));
+                    if (this_main_chart_train_id_need_change && data['train_status'] == 'PROGRESS') {
+                        this_main_chart_train_id = data['train_id'];
+                        this_main_chart_train_id_need_change = false;
+                    }
+
+                } else {
+                    epoch_percent = '100%';
+                    step_percent = '100%';
+                }
+                if (data['train_status'] == 'SUCCESS') {
+                    epoch_percent = '100%';
+                    step_percent = '100%'
+                }
+
+                let tr = $('<tr></tr>');
+                let id_td = $('<td></td>').append($('<a></a>').attr('href', '/record/' + data['train_id']).attr('target', '_blank').append('Task ' + data['train_id']));
+                let create_time_td = $('<td></td>').append(data['train_create_time']);
+                let running_time_td = $('<td></td>').append(data['train_took_seconds']);
+                let epoch_td = $('<td></td>').append($('<span></span>').addClass('label gradient-' + gradient_index + '  btn-rounded').append(epoch_percent));
+                let step_td = $('<td></td>').append($('<div></div>').addClass('progress').attr('style', 'height: 10px').append($('<div></div>').addClass('progress-bar gradient-' + gradient_index).attr('style', 'width:' + step_percent).attr('role', 'progressbar').append($('<span></span>').addClass('sr-only').append(step_percent))));
+                let acc_td = $('<td></td>').append(data['train_acc']);
+                let loss_td = $('<td></td>').append(data['train_loss']);
+                let status_td = $('<td></td>').append(data['train_status']);
+                let action_td = $('<td></td>').append(action_span);
+
+                {#.append($('<a></a>').attr('href', '#').attr('data-toggle', 'tooltip').attr('data-placement', 'top').attr('title', 'Close it').attr('data-original-title', 'Close').append($('<i></i>').addClass('fa fa-close color-danger')))#}
+                tr.append(id_td).append(create_time_td).append(running_time_td).append(epoch_td).append(step_td).append(acc_td).append(loss_td).append(status_td).append(action_td);
+                elem.append(tr);
+            });
+        }
+
+        function runningTime(time, elem) {
+
+            let leve1 = time;
+            let hour = Math.floor(leve1 / (3600));
+            let level2 = leve1 % (3600);
+            let minute = Math.floor(level2 / (60));
+            let level3 = level2 % (60);
+            let second = level3;
+
+            let Timer = hour + "小时" + minute + "分" + second + "秒";
+            //在页面上插入日期
+            elem.empty().append(Timer);
+            setTimeout(function () {
+                runningTime(time++, elem);
+            }, 1000);
+        }
+
+
+    });
+
+    $(document).ready(function () {
+
+        $(document).on("click", "#show_at_main_chart_btn", function () {
+            let id = this.getAttribute('name');
+            console.log(id);
+            this_main_chart_train_id = id;
+            this_main_chart_train_id_need_change = false;
+
+        });
+    });
 </script>
 </body>
 

@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbde06eb-d73c-4d85-863f-69d27bae6821" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crnn/checkpoint.pth.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_old.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/data.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/datalist.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/datalist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/record.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/train.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/train.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wechat_app/pages/youtuHW/youtuHW.js" beforeDir="false" afterPath="$PROJECT_DIR$/wechat_app/pages/youtuHW/youtuHW.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wechat_app/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/wechat_app/project.config.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +23,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_old.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="389" lean-forward="true" selection-start-line="389" selection-end-line="389" />
+            <state relative-caret-position="-75">
+              <caret line="197" selection-start-line="197" selection-end-line="197" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -25,10 +45,66 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_task.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3657">
+              <caret line="251" column="9" selection-start-line="251" selection-start-column="9" selection-end-line="251" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="105">
+                <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hwr.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="86">
+              <caret line="109" column="31" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crnn/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4">
+              <caret line="66" column="57" selection-start-line="66" selection-start-column="57" selection-end-line="66" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crnn/Config.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/hwr.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -36,20 +112,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="298" column="54" lean-forward="true" selection-start-line="298" selection-start-column="54" selection-end-line="298" selection-end-column="54" />
+            <state relative-caret-position="3075">
+              <caret line="205" column="25" selection-start-line="205" selection-start-column="25" selection-end-line="205" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/record.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -64,11 +132,21 @@
       <find>progress-bar</find>
       <find>progress</find>
       <find>photo</find>
-      <find>up_photo</find>
       <find>validateImageInput</find>
       <find>form-control</find>
       <find>up_</find>
+      <find>channelId</find>
       <find>validate_result</find>
+      <find>ckpt</find>
+      <find>CELERY_BROKER_URL</find>
+      <find>redis</find>
+      <find>sleep</find>
+      <find>$PROJECT_DIR$/../../../../../hly/PycharmProjects/</find>
+      <find>up_photo</find>
+      <find>UPLOAD_FOLDER</find>
+      <find>start_train</find>
+      <find>dashboard</find>
+      <find>Pic_str</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -81,22 +159,31 @@
         <option value="$PROJECT_DIR$/wechat_app/pages/nine/nine.json" />
         <option value="$PROJECT_DIR$/main_dc.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/task.py" />
+        <option value="$PROJECT_DIR$/main_task.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/hwr.sql" />
+        <option value="$PROJECT_DIR$/main_hly.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="494" />
+    <option name="x" value="396" />
     <option name="y" value="23" />
-    <option name="width" value="946" />
+    <option name="width" value="1027" />
     <option name="height" value="877" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -107,31 +194,31 @@
             <path>
               <item name="tf-pytorch-flask-web-wechat" type="b2602c69:ProjectViewProjectNode" />
               <item name="tf-pytorch-flask-web-wechat" type="462c0819:PsiDirectoryNode" />
-              <item name="crnn" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tf-pytorch-flask-web-wechat" type="b2602c69:ProjectViewProjectNode" />
               <item name="tf-pytorch-flask-web-wechat" type="462c0819:PsiDirectoryNode" />
-              <item name="wechat_app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/crnn" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/crnn" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/crnn" />
       <recent name="$PROJECT_DIR$/static" />
     </key>
   </component>
@@ -147,7 +234,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.main_hly">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="mnist_test" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,7 +247,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_old.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,6 +257,27 @@
       <method v="2" />
     </configuration>
     <configuration name="main_dc" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mnist_test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_old.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_hly" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="mnist_test" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -192,6 +300,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main_hly" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.main_dc" />
       </list>
@@ -220,27 +329,46 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="494" y="23" width="946" height="877" extended-state="0" />
+    <frame x="31" y="23" width="1027" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30810812" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.25149104" />
+      <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" weight="0.20978442" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49943882" weight="0.35414013" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49943882" weight="0.47388536" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3299363" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299363" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.5401274" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.35796177" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005612" side_tool="true" weight="0.35286623" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3299363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.20978442" />
+      <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" visible="true" weight="0.20978442" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49943882" weight="0.5082803" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3299363" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299363" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.35796177" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005612" side_tool="true" weight="0.35286623" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3299363" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -254,16 +382,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="114" column="28" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cnocr_test.py" />
-    <entry file="file://$PROJECT_DIR$/upload/2020051823121019.png" />
-    <entry file="file://$PROJECT_DIR$/upload/2020051823075604.jpg" />
     <entry file="file://$PROJECT_DIR$/upload/2020051823052408.jpg" />
     <entry file="file://$PROJECT_DIR$/upload/2020051823032577.jpg" />
     <entry file="file://$PROJECT_DIR$/upload/2020051823084771.jpg" />
@@ -347,13 +465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crnn/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/index.html" />
     <entry file="file://$PROJECT_DIR$/static.oldversion/js/main.js" />
     <entry file="file://$PROJECT_DIR$/examples/20457890_2399557098.jpg">
@@ -399,10 +510,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/crnn/dictionary.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crnn/Config.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/hwr.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3075">
+          <caret line="205" column="25" selection-start-line="205" selection-start-column="25" selection-end-line="205" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -413,23 +541,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/crnn/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="298" column="54" lean-forward="true" selection-start-line="298" selection-start-column="54" selection-end-line="298" selection-end-column="54" />
+        <state relative-caret-position="4">
+          <caret line="66" column="57" selection-start-line="66" selection-start-column="57" selection-end-line="66" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hwr.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="109" column="31" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3657">
+          <caret line="251" column="9" selection-start-line="251" selection-start-column="9" selection-end-line="251" selection-end-column="9" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///anaconda2/envs/venv/lib/python3.7/site-packages/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="1181" column="23" lean-forward="true" selection-start-line="1181" selection-start-column="23" selection-end-line="1181" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="389" lean-forward="true" selection-start-line="389" selection-end-line="389" />
+        <state relative-caret-position="-75">
+          <caret line="197" selection-start-line="197" selection-end-line="197" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_old.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="105">
+            <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

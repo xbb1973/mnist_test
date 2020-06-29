@@ -191,10 +191,8 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group">
-                                            <input id="validate_result" class="form-control" type="text" placeholder="验证结果"
-                                                   readonly="readonly">
-<!--                                            <h4 class="card-title">验证结果验证结果验证结果</h4>-->
+                                        <div class="text-center">
+                                            <p class="text-muted m-b-20" id="validate_resultP">验证结果</p>
                                         </div>
                                     </div>
                                 </div>
@@ -388,7 +386,7 @@
             if (data.response) {
                 console.log(data.response.msg);
                 toastr.success("图片分析结果",data.response.msg);
-                $("#validate_result").val(data.response.msg);
+                $("#validate_resultP").text(data.response.msg);
             }
 
         }).on("filebatchuploadcomplete", function (event, data) {
